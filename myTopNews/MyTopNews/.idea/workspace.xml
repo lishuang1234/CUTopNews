@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="61651bf4-fe2f-48c7-b645-9b9ecd04103d" name="Default" comment="">
+      <change type="DELETED" beforePath="D:\Github_android\myTopNews\myTopNews\MyTopNews\bin\classes\com\ls\mytopnews\BaseActivity.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Github_android\myTopNews\myTopNews\MyTopNews\bin\classes\com\ls\mytopnews\DetailsActivity$JSInterface.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Github_android\myTopNews\myTopNews\MyTopNews\bin\classes\com\ls\mytopnews\DetailsActivity$MyAsyncTask.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Github_android\myTopNews\myTopNews\MyTopNews\bin\classes\com\ls\mytopnews\DetailsActivity$MyWebChromeClient.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Github_android\myTopNews\myTopNews\MyTopNews\bin\classes\com\ls\mytopnews\DetailsActivity$MyWebViewClient.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Github_android\myTopNews\myTopNews\MyTopNews\bin\classes\com\ls\mytopnews\DetailsActivity.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Github_android\myTopNews\myTopNews\MyTopNews\bin\classes\com\ls\mytopnews\ImageShowActivity.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Github_android\myTopNews\myTopNews\MyTopNews\bin\classes\com\ls\mytopnews\MainActivity$1.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Github_android\myTopNews\myTopNews\MyTopNews\bin\classes\com\ls\mytopnews\MainActivity.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Github_android\myTopNews\myTopNews\MyTopNews\bin\classes\com\ls\mytopnews\Welcome$1.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Github_android\myTopNews\myTopNews\MyTopNews\bin\classes\com\ls\mytopnews\Welcome.class" afterPath="" />
+      <change type="DELETED" beforePath="D:\Github_android\myTopNews\myTopNews\MyTopNews\bin\dexedLibs\android-support-v4-ad353e74c118c0fdcadc97aff82457e0.jar" afterPath="" />
+      <change type="DELETED" beforePath="D:\Github_android\myTopNews\myTopNews\MyTopNews\bin\dexedLibs\fastjson-1.1.34.android-18f93264679a5eafab340761c56f1a9d.jar" afterPath="" />
+      <change type="DELETED" beforePath="D:\Github_android\myTopNews\myTopNews\MyTopNews\bin\dexedLibs\jsoup-1.8.1-21df794f3dea8189a00d7c69f97a6851.jar" afterPath="" />
+      <change type="DELETED" beforePath="D:\Github_android\myTopNews\myTopNews\MyTopNews\bin\dexedLibs\library-1c395778ad1ba95d87d8fe92a8b39880.jar" afterPath="" />
+      <change type="DELETED" beforePath="D:\Github_android\myTopNews\myTopNews\MyTopNews\bin\dexedLibs\universal-image-loader-1.9.3-with-sources-bcd23f8ca81f99a11ce71f9eeb098e77.jar" afterPath="" />
+      <change type="DELETED" beforePath="D:\Github_android\myTopNews\myTopNews\MyTopNews\src\com\ls\activity\ImageShowActivity.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/ls/listener/BackGestureListener.class" afterPath="$PROJECT_DIR$/bin/classes/com/ls/listener/BackGestureListener.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/ls/db/ChannelNewsDBUtil.class" afterPath="$PROJECT_DIR$/bin/classes/com/ls/db/ChannelNewsDBUtil.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/ls/tool/Constants.class" afterPath="$PROJECT_DIR$/bin/classes/com/ls/tool/Constants.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/ls/view/DrawerView$1.class" afterPath="$PROJECT_DIR$/bin/classes/com/ls/view/DrawerView$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/ls/view/DrawerView$2.class" afterPath="$PROJECT_DIR$/bin/classes/com/ls/view/DrawerView$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/ls/view/DrawerView$3.class" afterPath="$PROJECT_DIR$/bin/classes/com/ls/view/DrawerView$3.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/ls/view/DrawerView.class" afterPath="$PROJECT_DIR$/bin/classes/com/ls/view/DrawerView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/MyTopNews.apk" afterPath="$PROJECT_DIR$/bin/MyTopNews.apk" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/ls/adapter/NewsAdapter.class" afterPath="$PROJECT_DIR$/bin/classes/com/ls/adapter/NewsAdapter.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/ls/fragment/NewsFragment$1$1.class" afterPath="$PROJECT_DIR$/bin/classes/com/ls/fragment/NewsFragment$1$1.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/ls/fragment/NewsFragment$2.class" afterPath="$PROJECT_DIR$/bin/classes/com/ls/fragment/NewsFragment$2.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/ls/fragment/NewsFragment.class" afterPath="$PROJECT_DIR$/bin/classes/com/ls/fragment/NewsFragment.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/ls/mytopnews/R$color.class" afterPath="$PROJECT_DIR$/bin/classes/com/ls/mytopnews/R$color.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/ls/mytopnews/R$dimen.class" afterPath="$PROJECT_DIR$/bin/classes/com/ls/mytopnews/R$dimen.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/ls/mytopnews/R$drawable.class" afterPath="$PROJECT_DIR$/bin/classes/com/ls/mytopnews/R$drawable.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/jeremyfeinstein/slidingmenu/lib/R$id.class" afterPath="$PROJECT_DIR$/bin/classes/com/jeremyfeinstein/slidingmenu/lib/R$id.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/ls/mytopnews/R$id.class" afterPath="$PROJECT_DIR$/bin/classes/com/ls/mytopnews/R$id.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/jeremyfeinstein/slidingmenu/lib/R$layout.class" afterPath="$PROJECT_DIR$/bin/classes/com/jeremyfeinstein/slidingmenu/lib/R$layout.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/ls/mytopnews/R$layout.class" afterPath="$PROJECT_DIR$/bin/classes/com/ls/mytopnews/R$layout.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/ls/mytopnews/R$menu.class" afterPath="$PROJECT_DIR$/bin/classes/com/ls/mytopnews/R$menu.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/ls/mytopnews/R$string.class" afterPath="$PROJECT_DIR$/bin/classes/com/ls/mytopnews/R$string.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/ls/mytopnews/R$style.class" afterPath="$PROJECT_DIR$/bin/classes/com/ls/mytopnews/R$style.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/ls/mytopnews/R$styleable.class" afterPath="$PROJECT_DIR$/bin/classes/com/ls/mytopnews/R$styleable.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/ls/view/RefreshableView.class" afterPath="$PROJECT_DIR$/bin/classes/com/ls/view/RefreshableView.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes/com/ls/view/SwitchButton.class" afterPath="$PROJECT_DIR$/bin/classes/com/ls/view/SwitchButton.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/classes.dex" afterPath="$PROJECT_DIR$/bin/classes.dex" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/res/crunch/drawable-xhdpi/detail_loading.png" afterPath="$PROJECT_DIR$/bin/res/crunch/drawable-xhdpi/detail_loading.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-xhdpi/detail_loading.png" afterPath="$PROJECT_DIR$/res/drawable-xhdpi/detail_loading.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/resources.ap_" afterPath="$PROJECT_DIR$/bin/resources.ap_" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/res/crunch/drawable-xhdpi/title.png" afterPath="$PROJECT_DIR$/bin/res/crunch/drawable-xhdpi/title.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable-xhdpi/title.png" afterPath="$PROJECT_DIR$/res/drawable-xhdpi/title.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.classpath" afterPath="$PROJECT_DIR$/.classpath" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/AndroidManifest.xml" afterPath="$PROJECT_DIR$/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/AndroidManifest.xml" afterPath="$PROJECT_DIR$/bin/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ls/listener/BackGestureListener.java" afterPath="$PROJECT_DIR$/src/com/ls/listener/BackGestureListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ls/db/ChannelNewsDBUtil.java" afterPath="$PROJECT_DIR$/src/com/ls/db/ChannelNewsDBUtil.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ls/tool/Constants.java" afterPath="$PROJECT_DIR$/src/com/ls/tool/Constants.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ls/view/DrawerView.java" afterPath="$PROJECT_DIR$/src/com/ls/view/DrawerView.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/ls/fragment/NewsFragment.java" afterPath="$PROJECT_DIR$/src/com/ls/fragment/NewsFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gen/com/jeremyfeinstein/slidingmenu/lib/R.java" afterPath="$PROJECT_DIR$/gen/com/jeremyfeinstein/slidingmenu/lib/R.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gen/com/ls/mytopnews/R.java" afterPath="$PROJECT_DIR$/gen/com/ls/mytopnews/R.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/R.txt" afterPath="$PROJECT_DIR$/bin/R.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/colors.xml" afterPath="$PROJECT_DIR$/res/values/colors.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/dimens.xml" afterPath="$PROJECT_DIR$/res/values/dimens.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/drawable/ic_action_report.xml" afterPath="$PROJECT_DIR$/res/drawable/ic_action_report.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/left_drawer_fragment.xml" afterPath="$PROJECT_DIR$/res/layout/left_drawer_fragment.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/mian_head.xml" afterPath="$PROJECT_DIR$/res/layout/mian_head.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/news_fragment.xml" afterPath="$PROJECT_DIR$/res/layout/news_fragment.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/strings.xml" afterPath="$PROJECT_DIR$/res/values/strings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/values/styles.xml" afterPath="$PROJECT_DIR$/res/values/styles.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/res/layout/tool_bar.xml" afterPath="$PROJECT_DIR$/res/layout/tool_bar.xml" />
+      <change type="MOVED" beforePath="D:\Github_android\myTopNews\myTopNews\MyTopNews\src\com\ls\mytopnews\BaseActivity.java" afterPath="$PROJECT_DIR$/src/com/ls/activity/BaseActivity.java" />
+      <change type="MOVED" beforePath="D:\Github_android\myTopNews\myTopNews\MyTopNews\src\com\ls\mytopnews\DetailsActivity.java" afterPath="$PROJECT_DIR$/src/com/ls/activity/DetailsActivity.java" />
+      <change type="MOVED" beforePath="D:\Github_android\myTopNews\myTopNews\MyTopNews\src\com\ls\mytopnews\MainActivity.java" afterPath="$PROJECT_DIR$/src/com/ls/activity/MainActivity.java" />
+      <change type="MOVED" beforePath="D:\Github_android\myTopNews\myTopNews\MyTopNews\src\com\ls\mytopnews\Welcome.java" afterPath="$PROJECT_DIR$/src/com/ls/activity/Welcome.java" />
+    </list>
+    <ignored path="MyTopNews.iws" />
+    <ignored path=".idea/workspace.xml" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager" flattened_view="true" show_ignored="false" />
+  <component name="CreatePatchCommitExecutor">
+    <option name="PATCH_PATH" value="" />
+  </component>
+  <component name="DaemonCodeAnalyzer">
+    <disable_hints />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="MyTopNews" />
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-8" />
+    <option name="y" value="22" />
+    <option name="width" value="1382" />
+    <option name="height" value="754" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="false">
+    <OptionsSetting value="true" id="Add" />
+    <OptionsSetting value="true" id="Remove" />
+    <OptionsSetting value="true" id="Checkout" />
+    <OptionsSetting value="true" id="Update" />
+    <OptionsSetting value="true" id="Status" />
+    <OptionsSetting value="true" id="Edit" />
+    <ConfirmationsSetting value="0" id="Add" />
+    <ConfirmationsSetting value="0" id="Remove" />
+  </component>
+  <component name="ProjectReloadState">
+    <option name="STATE" value="0" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="MyTopNews" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
+      <pane id="AndroidView" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="GoToClass.includeLibraries" value="false" />
+    <property name="GoToClass.toSaveIncludeLibraries" value="false" />
+    <property name="GoToFile.includeJavaFiles" value="false" />
+    <property name="MemberChooser.sorted" value="false" />
+    <property name="MemberChooser.showClasses" value="true" />
+    <property name="MemberChooser.copyJavadoc" value="false" />
+    <property name="android.project.structure.last.selected" value="SDK Location" />
+    <property name="android.project.structure.proportion" value="0.15" />
+    <property name="options.lastSelected" value="project.propVCSSupport.Mappings" />
+    <property name="options.splitter.main.proportions" value="0.3" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../library" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+      <method />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+      <method />
+    </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="moduleWithDependencies" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <list size="0" />
+    <configuration name="&lt;template&gt;" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" default="true" selected="false">
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+    </configuration>
+    <configuration name="&lt;template&gt;" type="WebApp" default="true" selected="false">
+      <Host>localhost</Host>
+      <Port>5050</Port>
+    </configuration>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="61651bf4-fe2f-48c7-b645-9b9ecd04103d" name="Default" comment="" />
+      <created>1415546217994</created>
+      <updated>1415546217994</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="22" width="1382" height="754" extended-state="6" />
+    <editor active="false" />
+    <layout>
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Gradle Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="Vcs.Log.UiProperties">
+    <option name="RECENTLY_FILTERED_USER_GROUPS">
+      <collection />
+    </option>
+    <option name="RECENTLY_FILTERED_BRANCH_GROUPS">
+      <collection />
+    </option>
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="myTodoPanelSettings">
+      <TodoPanelSettings />
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>Android API 8 Platform</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>MyTopNews</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>library</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>
+

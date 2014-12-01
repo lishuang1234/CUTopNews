@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/top_bar"
+    style="@style/title_bar_style" >
+
+    <ImageView
+        android:id="@+id/top_head"
+        android:layout_width="@dimen/top_head_height"
+        android:layout_height="@dimen/top_head_height"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="6dp"
+        android:background="@drawable/bg_head"
+        android:padding="2dp"
+        android:scaleType="fitXY"
+        android:src="@drawable/default_round_head" />
+
+    <ImageView
+        android:id="@+id/title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@drawable/title" />
+
+    <ImageView
+        android:id="@+id/top_refersh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="2dp"
+        android:layout_toRightOf="@id/title"
+        android:src="@drawable/refreshicon_titlebar" />
+
+    <ImageView
+        android:id="@+id/top_more"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:scaleType="centerInside"
+        android:src="@drawable/right_drawer"
+        android:visibility="gone" />
+
+</RelativeLayout>
