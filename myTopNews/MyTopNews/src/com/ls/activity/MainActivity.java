@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
@@ -21,11 +23,17 @@ import com.ls.adapter.NewsFragmentPagerAdapter;
 import com.ls.app.AppApplication;
 import com.ls.bean.ChannelItem;
 import com.ls.bean.ChannelManage;
+import com.ls.bean.WeatherEntity;
 import com.ls.fragment.NewsFragment;
 import com.ls.mytopnews.R;
 import com.ls.tool.BaseTool;
+import com.ls.tool.Constants;
+import com.ls.tool.Options;
+import com.ls.tool.ShareSDKHelper;
 import com.ls.view.ColumnHorizontalScrollView;
 import com.ls.view.DrawerView;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
 
 public class MainActivity extends FragmentActivity implements OnClickListener,
 		OnPageChangeListener {
@@ -40,12 +48,29 @@ public class MainActivity extends FragmentActivity implements OnClickListener,
 	private ImageView shade_leftImageView;
 	private ImageView shade_rightImageView;
 	private ImageView top_headImageView;
-	private ImageView top_moreImageView;
+	private TextView top_weather;
 	private ImageView top_refreshImageView;
 	private int columnSelectIndex;
 	private List<NewsFragment> fragments;
 	private SlidingMenu mSlidingMenu;
+	private WeatherEntity wEntity;
+//	private ShareSDKHelper helper;
 	private List<ChannelItem> userChannelList = new ArrayList<ChannelItem>();
+	//protected ImageLoader imageLoader = ImageLoader.getInstance();
+//	DisplayImageOptions options;
+	private Handler handler = new Handler() {
+
+		@Override
+		public void handleMessage(Message msg) {
+			// TODO Auto-generated method stub
+			super.handleMessage(msg);
+			if (msg.what == 1) {
+				top_weather.setText(wEntity.getCity() + "/"
+						+ wEntity.getTemper().split("：")[2]);
+			}
+		}
+
+	};
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -53,8 +78,12 @@ public class MainActivity extends FragmentActivity implements OnClickListener,
 		setContentView(R.layout.main);
 		mScreenWidth = BaseTool.getWindowWidth(this);
 		mItemWidth = mScreenWidth / 7;
+		// helper = new ShareSDKHelper(this);
+		// options = Options.getListOptions();
+		new GetWeather().start();
 		initView();
 		initSlidingMenu();
+
 	}
 
 	private void initSlidingMenu() {
@@ -128,15 +157,20 @@ public class MainActivity extends FragmentActivity implements OnClickListener,
 		shade_leftImageView = (ImageView) findViewById(R.id.shade_left);
 		shade_rightImageView = (ImageView) findViewById(R.id.shade_right);
 		top_headImageView = (ImageView) findViewById(R.id.top_head);
-		top_moreImageView = (ImageView) findViewById(R.id.top_more);
+		top_weather = (TextView) findViewById(R.id.top_weather);
 		top_refreshImageView = (ImageView) findViewById(R.id.top_refersh);
 		top_headImageView.setOnClickListener(this);
-		top_moreImageView.setOnClickListener(this);
+		top_weather.setOnClickListener(this);
 		button_more_columnsView.setOnClickListener(this);
 		// top_refreshImageView.setOnClickListener(this);
 		mColumnHorizontalScrollView.setParam(this, mRadioGroup_contentLayout,
 				shade_leftImageView, shade_leftImageView,
 				ll_more_columnsLayout, rl_columnLayout);
+		// if (helper.checkInti() != null) {// 已授权
+		// imageLoader.displayImage(
+		// helper.getInitPlat().getDb().getUserIcon(),
+		// top_headImageView, options);
+		// }
 		setChangeView();
 	}
 
@@ -157,12 +191,12 @@ public class MainActivity extends FragmentActivity implements OnClickListener,
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
 		switch (v.getId()) {
-		case R.id.top_more:// ����more��ť
-			if (mSlidingMenu.isSecondaryMenuShowing()) {
-				mSlidingMenu.showContent();
-			} else {
-				mSlidingMenu.showSecondaryMenu();
-			}
+		case R.id.top_weather:// ����more��ť
+			// if (mSlidingMenu.isSecondaryMenuShowing()) {
+			// mSlidingMenu.showContent();
+			// } else {
+			// mSlidingMenu.showSecondaryMenu();
+			// }
 
 			break;
 		case R.id.top_head:// ����head
@@ -212,5 +246,19 @@ public class MainActivity extends FragmentActivity implements OnClickListener,
 			} else
 				mRadioGroup_contentLayout.getChildAt(i).setSelected(false);
 		}
+	}
+
+	class GetWeather extends Thread {
+
+		@Override
+		public void run() {
+			// TODO Auto-generated method stub
+			super.run();
+			wEntity = Constants.getWeatherEntity("chongqing");
+			if (wEntity != null)
+				handler.sendEmptyMessage(1);
+
+		}
+
 	}
 }

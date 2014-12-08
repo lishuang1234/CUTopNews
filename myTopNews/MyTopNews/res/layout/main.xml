@@ -22,8 +22,8 @@
             <com.ls.view.ColumnHorizontalScrollView
                 android:id="@+id/mColumnHori"
                 android:layout_width="match_parent"
-                android:layout_height="40dp" 
-                android:scrollbars="none">
+                android:layout_height="40dp"
+                android:scrollbars="none" >
 
                 <LinearLayout
                     android:id="@+id/mRadioGroup_Content"
@@ -41,27 +41,29 @@
                 android:layout_height="40dp"
                 android:layout_alignParentLeft="true"
                 android:background="@drawable/channel_leftblock"
-                android:visibility="gone" />
+                android:visibility="visible" />
 
             <ImageView
                 android:id="@+id/shade_right"
                 android:layout_width="10dp"
                 android:layout_height="40dp"
                 android:layout_alignParentRight="true"
-                android:background="@drawable/channel_leftblock"
-                android:visibility="gone" />
+                android:background="@drawable/channel_rightblock"
+                android:visibility="visible" />
         </RelativeLayout>
 
         <LinearLayout
             android:id="@+id/ll_more_columns"
             android:layout_width="wrap_content"
-            android:layout_height="40dp" >
+            android:layout_height="40dp"
+            android:visibility="gone" >
 
             <ImageView
                 android:id="@+id/button_more_columns"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:src="@drawable/channel_glide_day_bg" />
+                android:src="@drawable/channel_glide_day_bg"
+                android:visibility="gone" />
         </LinearLayout>
     </LinearLayout>
 

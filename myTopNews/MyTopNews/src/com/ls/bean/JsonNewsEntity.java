@@ -103,6 +103,16 @@ public class JsonNewsEntity implements Serializable {
 	private String picThereUrl;
 	private int isFavor = 0;
 
+	// private String table;
+	//
+	// public String getTable() {
+	// return table;
+	// }
+	//
+	// public void setTable(String table) {
+	// this.table = table;
+	// }
+
 	public int getIsFavor() {
 		return isFavor;
 	}

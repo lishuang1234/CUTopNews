@@ -3,10 +3,12 @@ package com.ls.tool;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.R.integer;
 import android.content.Context;
 
 import com.ls.bean.JsonNewsEntity;
 import com.ls.bean.NewsEntity;
+import com.ls.bean.WeatherEntity;
 import com.ls.db.ChannelNewsDBUtil;
 
 public class Constants {
@@ -19,6 +21,13 @@ public class Constants {
 	public static final int DB_CHANNEL_NEWS = 1;
 	public static final int UP_DATE_NEWS = 1;
 	public static final int GET_NEWS = 0;
+	public static final String SETTING = "setting";
+	public static final String SETTING_FONT_SIZE = "textFontSize";
+	public static final String SETTING_LOAD_IMAGE = "loadImage";
+	public static final String SETTING_NOTIFY = "notify";
+	public static final String SETTING_SHARE_WHEN_FAVOR = "shareWhenFavor";
+	public static final String SETTING_CLEAR = "clear";
+
 	private List<String> newsImagesList;
 	private Context context;
 	private ChannelNewsDBUtil dbUtil;
@@ -27,15 +36,17 @@ public class Constants {
 	public static final int[] NEWS_URL_ID = { 1, 3, 4, 6, 7 };
 	public static final String[] REFRESH_NEWS = { "topnewsRe", "academynewsRe",
 			"classnewsRe", "medianewsRe", "specialnewsRe", "newsReAll" };
-	private static final String URL_PATH = "http://113.251.223.168/cquptnews/servlet/NewsServlet?news_flag=";
+	private static final String URL_PATH = "http://113.250.159.145/cquptnews/servlet/NewsServlet?action_flag=";
 
 	public Constants(Context context) {
 		this.context = context;
 		dbUtil = ChannelNewsDBUtil.getInstance(context);
+
 	}
 
 	/** 从网络中获取新聞 */
-	public List<JsonNewsEntity> getNewsEntityList(String table) {
+	private List<JsonNewsEntity> getNewsEntityList(String table) {
+
 		String jsonString = HttpUtils.getJsonContent(URL_PATH + table);
 		System.out.println("jsonString" + jsonString);
 		// /确实为空判断
@@ -53,7 +64,7 @@ public class Constants {
 
 	/** 网络获取最新新闻 */
 	/** 传入当前数据库中最新新闻的URL */
-	public List<JsonNewsEntity> upDateNewsEntityList(String table, String url) {
+	private List<JsonNewsEntity> upDateNewsEntityList(String table, String url) {
 		String jsonString = HttpUtils.getJsonContent(URL_PATH + table + "&url="
 				+ url);
 		System.out.println(jsonString);
@@ -75,8 +86,9 @@ public class Constants {
 	public ArrayList<NewsEntity> getNewsList(String table, int flag) {
 		List<JsonNewsEntity> jsonNewsEntities = new ArrayList<JsonNewsEntity>();
 		if (flag == GET_NEWS) {// 获得数据从数据库中获得、如果数据库为空，则从网上下载
+
 			jsonNewsEntities = dbUtil.selectData(table, null, null, null, null,
-					null, null);// 数据库获取
+					null, "sourceUrl desc");// 数据库获取
 			if (jsonNewsEntities.size() == 0) {// 网络中获取
 				System.out.println("数据库为空！");
 				jsonNewsEntities = getNewsEntityList(table);
@@ -156,109 +168,65 @@ public class Constants {
 		return newsList;
 	}
 
-	class AddDataToDB extends Thread {
-		private List<JsonNewsEntity> jsonNewsEntities;
-		private String table;
+	/** 从数据库查询收藏的新闻 */
+	public List<NewsEntity> getFavorNews() {
+		List<NewsEntity> newsEntities = new ArrayList<NewsEntity>();
+		for (int i = 0; i < TABLE_NAME.length; i++) {
 
-		public AddDataToDB(List<JsonNewsEntity> jsonNewsEntities, String table) {
-			this.jsonNewsEntities = jsonNewsEntities;
-			this.table = table;
-		}
-
-		@Override
-		public void run() {
-			// TODO Auto-generated method stub
-			for (int i = 0; i < jsonNewsEntities.size(); i++) {// 数据库添加
-				System.out.println("添加数据库" + jsonNewsEntities.get(i));
-				dbUtil.insertData(table, jsonNewsEntities.get(i));
+			List<JsonNewsEntity> jsonNewsEntities = dbUtil.selectData(
+					TABLE_NAME[i], null, "isFavor=?", new String[] { "1" },
+					null, null, "sourceUrl desc");// 数据库获取
+			if (jsonNewsEntities.size() > 0) {
+				for (int j = 0; j < jsonNewsEntities.size(); j++) {
+					System.out.println("收藏的新闻是：：" + jsonNewsEntities.get(j)
+							+ "  " + j);
+					JsonNewsEntity jsonNewsEntity = jsonNewsEntities.get(j);
+					NewsEntity newsEntity = new NewsEntity();
+					newsEntity.setTitle(jsonNewsEntity.getTitle());
+					newsEntity.setPushTime(jsonNewsEntity.getPublishTime());
+					newsEntity.setSource_url(jsonNewsEntity.getSourceUrl());
+					newsEntity.setCommentNum(jsonNewsEntity.getClicks());
+					newsEntity.setPicOne(jsonNewsEntity.getPicOneUrl());
+					newsEntity.setPicTwo(jsonNewsEntity.getPicTwoUrl());
+					newsEntity.setPicThr(jsonNewsEntity.getPicThereUrl());
+					newsEntity.setTable(TABLE_NAME[i]);// 设置表名
+					newsEntities.add(newsEntity);
+				}
 			}
-			super.run();
 		}
-
+		System.out.println("收藏查询完毕");
+		return newsEntities;
 	}
-	// /**
-	// * 获取新闻列表
-	// */
-	// public static ArrayList<NewsEntity> getNewsList() {
+
 	//
-	// ArrayList<NewsEntity> newsList = new ArrayList<NewsEntity>();
-	// for (int i = 0; i < 10; i++) {
-	// NewsEntity newsEntity = new NewsEntity();
-	// newsEntity.setID(i);
-	// newsEntity.setNewsId(i);
-	// newsEntity.setCllectStatue(false);
-	// newsEntity.setCommentNum(i + 10);
-	// newsEntity.setInterestedStatue(true);
-	// newsEntity.setLikeStatus(true);
-	// newsEntity.setReadStatus(false);
-	// newsEntity.setNewsCategory("推荐");
-	// newsEntity.setNewsCategoryId(1);
-	// newsEntity
-	// .setSource_url("http://news.sina.com.cn/c/2014-05-05/134230063386.shtml");
-	// newsEntity.setTitle("可以用谷歌眼睛做的十件事情");
-	// List<String> url_listList = new ArrayList<String>();
-	// if (i % 2 == 1) {
-	// String url1 =
-	// "http://infopic.gtimg.com/qq_news/digi/pics/102/102066/102066094_400_640.jpg";
-	// String url2 =
-	// "http://infopic.gtimg.com/qq_news/digi/pics/102/102066/102066096_400_640.jpg";
-	// String url3 =
-	// "http://infopic.gtimg.com/qq_news/digi/pics/102/102066/102066099_400_640.jpg";
-	// newsEntity.setPicOne(url1);
-	// newsEntity.setPicTwo(url2);
-	// newsEntity.setPicThr(url3);
-	// newsEntity
-	// .setSource_url("http://xwzx.cqupt.edu.cn/xwzx/news.php?id=24716");//
-	// 重邮新闻网
-	// url_listList.add(url1);
-	// url_listList.add(url2);
-	// url_listList.add(url3);
-	// } else {
-	// newsEntity.setTitle("AA用车：智能短租");
-	// String url =
-	// "http://r3.sinaimg.cn/2/2014/0417/a7/6/92478595/580x1000x75x0.jpg";
-	// newsEntity.setPicOne(url);
-	// url_listList.add(url);
-	// }
-	// newsEntity.setPicList(url_listList);
-	// newsEntity.setPushTime(Long.valueOf(i));
-	// newsEntity.setSource("手机腾讯网");
-	// newsEntity
-	// .setSummary("腾讯数码讯：（编译：Gin）谷歌眼镜可能是目前最酷的可穿戴数码设备，你可以戴着它去任何地方");
-	// newsEntity.setMark(i);
-	// if (i == 4) {
-	// newsEntity.setTitle("部落强势回归");
-	// newsEntity.setLocal("推广");
-	// newsEntity.setIsLarge(true);
-	// String url =
-	// "http://imgt2.bdstatic.com/it/u=3269155243,2604389213&fm=21&gp=0.jpg";
-	// newsEntity.setSource_url(url);
-	// newsEntity.setPicOne(url);
-	// url_listList.clear();
-	// url_listList.add(url);
-	// } else {
-	// newsEntity.setIsLarge(false);
+	// class AddDataToDB extends Thread {
+	// private List<JsonNewsEntity> jsonNewsEntities;
+	// private String table;
 	//
-	// }
-	// if (i == 2) {
-	// newsEntity.setComment("评论部分说的很好！");
-	// }
-	// if (i <= 2) {
-	// // newsEntity.setPushTime(Long.valueOf(DateTools.getTime()));//
-	// // /可能会抛异常
-	// newsEntity.setPushTime(100L);// /可能会抛异常
-	// } else if (i > 2 && i < 5) {
-	// // newsEntity.setPushTime(Long.valueOf(DateTools.getTime()) -
-	// // 86400);
-	// newsEntity.setPushTime(10001L);
-	// } else {
-	// // newsEntity
-	// // .setPushTime(Long.valueOf(DateTools.getTime()) - 86400 * 2);
-	// newsEntity.setPushTime(1000002L);
-	// }
-	// newsList.add(newsEntity);
+	// public AddDataToDB(List<JsonNewsEntity> jsonNewsEntities, String table) {
+	// this.jsonNewsEntities = jsonNewsEntities;
+	// this.table = table;
 	// }
 	//
-	// return newsList;
+	// @Override
+	// public void run() {
+	// // TODO Auto-generated method stub
+	// for (int i = 0; i < jsonNewsEntities.size(); i++) {// 数据库添加
+	// System.out.println("添加数据库" + jsonNewsEntities.get(i));
+	// dbUtil.insertData(table, jsonNewsEntities.get(i));
 	// }
+	// super.run();
+	// }
+	//
+	// }
+	/** 获取天气信息javabean */
+	public static WeatherEntity getWeatherEntity(String city) {
+		String weatherJson = HttpUtils.getJsonContent(URL_PATH + "weatherRe"
+				+ "&city=" + city);
+		System.out.println("weatherJson:" + weatherJson);
+		WeatherEntity wEntity = JsonTool.getPerson(weatherJson,
+				WeatherEntity.class);
+		return wEntity;
+	}
+
 }

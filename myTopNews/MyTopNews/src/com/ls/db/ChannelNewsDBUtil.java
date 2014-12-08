@@ -3,6 +3,7 @@ package com.ls.db;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.R.integer;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -19,13 +20,14 @@ public class ChannelNewsDBUtil {
 
 	private ChannelNewsDBUtil(Context context) {// 適用於新闻频道数据库
 		mContext = context;
-		mSQLHelp = new ChannelNewsSQLHelper(context);
+
 	}
 
 	/**
 	 * 初始化数据库操作DBUtil类
 	 */
 	public static ChannelNewsDBUtil getInstance(Context context) {
+
 		if (channelNewsDbUtil == null) {
 			channelNewsDbUtil = new ChannelNewsDBUtil(context);
 		}
@@ -48,7 +50,7 @@ public class ChannelNewsDBUtil {
 	 */
 	public boolean insertData(String table, JsonNewsEntity jEntity) {
 		boolean flag = false;
-
+		mSQLHelp = new ChannelNewsSQLHelper(mContext);
 		mSQLiteDatabase = mSQLHelp.getWritableDatabase();
 		long id = -1;
 		ContentValues values = new ContentValues();
@@ -74,6 +76,7 @@ public class ChannelNewsDBUtil {
 	 */
 	public int updateData(String table, JsonNewsEntity jEntity,
 			String whereClause, String[] whereArgs) {
+		mSQLHelp = new ChannelNewsSQLHelper(mContext);
 		mSQLiteDatabase = mSQLHelp.getWritableDatabase();
 		ContentValues values = new ContentValues();
 		values.put("title", jEntity.getTitle());
@@ -86,7 +89,7 @@ public class ChannelNewsDBUtil {
 		values.put("isFavor", jEntity.getIsFavor());
 		int flag = mSQLiteDatabase
 				.update(table, values, whereClause, whereArgs);
-		
+
 		return flag;
 	}
 
@@ -97,9 +100,10 @@ public class ChannelNewsDBUtil {
 	 * @param whereArgs
 	 */
 	public int deleteData(String table, String whereClause, String[] whereArgs) {
+		mSQLHelp = new ChannelNewsSQLHelper(mContext);
 		mSQLiteDatabase = mSQLHelp.getWritableDatabase();
 		int flag = mSQLiteDatabase.delete(table, whereClause, whereArgs);
-		
+
 		return flag;
 	}
 
@@ -117,6 +121,7 @@ public class ChannelNewsDBUtil {
 	public List<JsonNewsEntity> selectData(String table, String[] columns,
 			String selection, String[] selectionArgs, String groupBy,
 			String having, String orderBy) {
+		mSQLHelp = new ChannelNewsSQLHelper(mContext);
 		List<JsonNewsEntity> jsonNewsEntities = new ArrayList<JsonNewsEntity>();
 		mSQLiteDatabase = mSQLHelp.getReadableDatabase();
 		Cursor cursor = mSQLiteDatabase.query(table, columns, selection,
@@ -143,4 +148,32 @@ public class ChannelNewsDBUtil {
 		cursor.close();
 		return jsonNewsEntities;
 	}
+
+	public int queryCount(String table) {
+		mSQLHelp = new ChannelNewsSQLHelper(mContext);
+		mSQLiteDatabase = mSQLHelp.getReadableDatabase();
+
+		// 查询记录条数
+		Cursor c = mSQLiteDatabase
+				.query(false, table, new String[] { "COUNT(*)" }, null, null,
+						null, null, null, null);
+
+		c.moveToNext();
+		int count = c.getInt(0);
+		System.out.println(count);
+		c.close();
+		mSQLiteDatabase.close();
+		return count;
+	}
+
+//	public void deleteCache(String table, String order, int start) {
+//		mSQLHelp = new ChannelNewsSQLHelper(mContext);
+//		mSQLiteDatabase = mSQLHelp.getReadableDatabase();
+//		String sql = "delete   from " + table + " order by " + order
+//				+ " limit " + start + " offset " + 50;// 跳过50条删除后面的条数
+//		String string = "delete from " + table
+//				+ "   where  (select sourceUrl from  " + table
+//				+ "  order by sourceUrl desc limit " + 83 + "  offset 50 )";
+//		mSQLiteDatabase.execSQL(string);
+//	}
 }

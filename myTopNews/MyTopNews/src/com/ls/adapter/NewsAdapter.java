@@ -6,6 +6,8 @@ import java.util.List;
 
 import android.R.integer;
 import android.app.Activity;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
 import android.net.NetworkInfo.DetailedState;
 import android.text.TextUtils;
@@ -33,6 +35,7 @@ import com.ls.service.NewsDetailService;
 import com.ls.tool.Constants;
 import com.ls.tool.DateTools;
 import com.ls.tool.Options;
+import com.ls.tool.ShareSDKHelper;
 import com.ls.view.HeadListView;
 import com.ls.view.HeadListView.HeaderAdapter;
 import com.nostra13.universalimageloader.core.DisplayImageOptions;
@@ -54,6 +57,9 @@ public class NewsAdapter extends BaseAdapter implements HeaderAdapter,
 	private View btn_pop_dislike;
 	private ChannelNewsDBUtil dbUtil;
 	private String table;
+	private ShareSDKHelper sdkHelper;
+	private SharedPreferences sPreferences;
+	private boolean isFavorWhenShare;
 
 	public NewsAdapter(Activity activity, List<NewsEntity> newsList,
 			String table) {
@@ -64,6 +70,11 @@ public class NewsAdapter extends BaseAdapter implements HeaderAdapter,
 		options = Options.getListOptions();
 		dbUtil = ChannelNewsDBUtil
 				.getInstance(activity.getApplicationContext());
+		sdkHelper = new ShareSDKHelper(activity);
+		sPreferences = activity.getSharedPreferences(Constants.SETTING,
+				Context.MODE_PRIVATE);
+		isFavorWhenShare = sPreferences.getBoolean(
+				Constants.SETTING_SHARE_WHEN_FAVOR, false);
 		initPopWindow();
 		initDateHead();
 
@@ -396,7 +407,7 @@ public class NewsAdapter extends BaseAdapter implements HeaderAdapter,
 		popWindow.setOutsideTouchable(true);
 		popWindow.update();
 		if (popWindow.isShowing()) {// 设置显示属性
-		
+
 		}
 		btn_pop_dislike.setOnClickListener(new OnClickListener() {
 			ViewHolder mHolder = new ViewHolder();
@@ -404,7 +415,7 @@ public class NewsAdapter extends BaseAdapter implements HeaderAdapter,
 			@Override
 			public void onClick(View v) {
 
-				Toast.makeText(activity.getApplicationContext(), "已取消收藏",
+				Toast.makeText(activity.getApplicationContext(), "已取消收藏!",
 						Toast.LENGTH_SHORT).show();
 				popWindow.dismiss();
 				dbUtil.updateData(table, new JsonNewsEntity(title, suorceUrl,
@@ -428,9 +439,19 @@ public class NewsAdapter extends BaseAdapter implements HeaderAdapter,
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
 
-				Toast.makeText(activity.getApplicationContext(), "已收藏",
+				Toast.makeText(activity.getApplicationContext(), "已收藏！",
 						Toast.LENGTH_SHORT).show();
 				popWindow.dismiss();
+				System.out.println("siFavor::" + isFavorWhenShare);
+
+				if (isFavorWhenShare) {
+					if (sdkHelper.checkInti() != null) {
+						sdkHelper.shareToPlat(title, suorceUrl);
+					} else {
+						Toast.makeText(activity.getApplicationContext(),
+								"先登录才能分享哦~", Toast.LENGTH_SHORT).show();
+					}
+				}
 				dbUtil.updateData(table, new JsonNewsEntity(title, suorceUrl,
 						publishTime, clicks, picOneUrl, picTwoUrl, picThereUrl,
 						1), "sourceUrl=?", new String[] { suorceUrl });// 更新收藏数据

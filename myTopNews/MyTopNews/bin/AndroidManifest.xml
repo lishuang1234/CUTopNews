@@ -37,6 +37,10 @@
             android:theme="@android:style/Theme.NoTitleBar" >
         </activity>
         <activity
+            android:name="com.ls.activity.FavorActivity"
+            android:theme="@android:style/Theme.NoTitleBar" >
+        </activity>
+        <activity
             android:name="cn.sharesdk.framework.ShareSDKUIShell"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait"
@@ -44,7 +48,6 @@
             android:windowSoftInputMode="stateHidden|adjustResize" />
     </application>
 
-   
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
@@ -55,5 +58,5 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.INTERNET" />
- 
+
 </manifest>

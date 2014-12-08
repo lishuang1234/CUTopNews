@@ -1,15 +1,14 @@
 package com.ls.activity;
 
-import java.io.File;
 import java.util.ArrayList;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
@@ -27,6 +26,7 @@ import android.widget.TextView;
 import com.ls.bean.NewsEntity;
 import com.ls.mytopnews.R;
 import com.ls.service.NewsDetailService;
+import com.ls.tool.Constants;
 import com.ls.tool.DateTools;
 import com.ls.tool.ShareSDKHelper;
 
@@ -45,6 +45,10 @@ public class DetailsActivity extends BaseActivity implements OnClickListener {
 	private ImageView action_repost;
 	private ImageView action_refresh;
 	private ShareSDKHelper sdkHelper;
+	private SharedPreferences sPreferences;
+	private SharedPreferences.Editor editor;
+
+	private boolean isSupportZoom;// 是否放大字体
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +57,9 @@ public class DetailsActivity extends BaseActivity implements OnClickListener {
 		setContentView(R.layout.details);
 		setNeedBackGesture(true);
 		sdkHelper = new ShareSDKHelper(DetailsActivity.this);
+		sPreferences = getSharedPreferences(Constants.SETTING,
+				Context.MODE_PRIVATE);
+		editor = sPreferences.edit();
 		getData();
 		initView();
 		initWebView();
@@ -60,6 +67,9 @@ public class DetailsActivity extends BaseActivity implements OnClickListener {
 
 	private void initView() {
 		// TODO Auto-generated method stub
+		isSupportZoom = sPreferences.getBoolean(Constants.SETTING_FONT_SIZE,
+				false);
+		System.out.println("siSupportZoom:" + isSupportZoom);
 		title = (TextView) findViewById(R.id.title);
 		progressBar = (ProgressBar) findViewById(R.id.ss_htmlprogressbar);
 		customview_Layout = (FrameLayout) findViewById(R.id.comment_layout);
@@ -88,21 +98,11 @@ public class DetailsActivity extends BaseActivity implements OnClickListener {
 			webSettings.setLayoutAlgorithm(LayoutAlgorithm.SINGLE_COLUMN);
 			// webSettings.setUseWideViewPort(true); // 打开页面时， 自适应屏幕
 			webSettings.setLoadWithOverviewMode(true);// 打开页面时， 自适应屏幕
-			webSettings.setSupportZoom(false);// 用于设置webview放大
-			webSettings.setBuiltInZoomControls(false);
+			webSettings.setSupportZoom(isSupportZoom);// 用于设置webview放大
+			webSettings.setBuiltInZoomControls(isSupportZoom);
 			// webView.setBackgroundColor(R.color.transparent);
 			// webSettings.setCacheMode(WebSettings.LOAD_DEFAULT); // 设置 缓存模式
 			webSettings.setRenderPriority(RenderPriority.HIGH);
-			// webSettings.setDomStorageEnabled(true);
-			// webSettings.setDatabaseEnabled(true);
-			// String cacheDirPath = getFilesDir().getAbsolutePath() +
-			// "cquptnews";
-			// // 设置数据库缓存路径
-			// webSettings.setDatabasePath(cacheDirPath);
-			// // 设置 Application Caches 缓存目录
-			// webSettings.setAppCachePath(cacheDirPath);
-			// // 开启 Application Caches 功能
-			// webSettings.setAppCacheEnabled(true);
 			webSettings.setBlockNetworkImage(true);
 
 			webView.addJavascriptInterface(new JSInterface(
@@ -187,7 +187,9 @@ public class DetailsActivity extends BaseActivity implements OnClickListener {
 			// TODO Auto-generated method stub
 			super.onPageFinished(view, url);
 			view.getSettings().setJavaScriptEnabled(true);
-			view.getSettings().setBlockNetworkImage(false);// 非阻塞图片下在加速。。。
+			view.getSettings().setBlockNetworkImage(
+					sPreferences
+							.getBoolean(Constants.SETTING_LOAD_IMAGE, false));// 非阻塞图片下在加速。。。
 			// Html加载完成之后添加监听图片的JS函数
 			addImageClickListener();
 			progressBar.setVisibility(View.GONE);

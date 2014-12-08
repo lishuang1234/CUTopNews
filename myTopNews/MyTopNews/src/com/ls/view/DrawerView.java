@@ -7,13 +7,15 @@ import android.view.View.OnClickListener;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 import cn.sharesdk.framework.Platform;
 import cn.sharesdk.sina.weibo.SinaWeibo;
 import cn.sharesdk.tencent.qzone.QZone;
+
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu;
 import com.jeremyfeinstein.slidingmenu.lib.SlidingMenu.OnClosedListener;
+import com.ls.activity.FavorActivity;
 import com.ls.activity.SettingsActivity;
 import com.ls.mytopnews.R;
 import com.ls.tool.Options;
@@ -34,6 +36,8 @@ public class DrawerView implements OnClickListener {
 	private ImageView loginQzone;
 	private ImageView loginUserPhoto;
 	private View settingBtn;
+	private View feedBack;
+	private View loginout;
 	private TextView loginUserName;
 	private String loginPlatName;
 	private ShareSDKHelper sdkHelper;
@@ -41,12 +45,13 @@ public class DrawerView implements OnClickListener {
 	DisplayImageOptions options;
 
 	public DrawerView(Activity activity) {
-		
+
 		this.activity = activity;
 		sdkHelper = new ShareSDKHelper(activity);
 		loginPlatName = sdkHelper.checkInti();
 		options = Options.getListOptions();
 	}
+
 	public SlidingMenu initSlidingMenu() {
 		localSlidingMenu = new SlidingMenu(activity);
 		localSlidingMenu.setMode(SlidingMenu.LEFT);// �������һ��˵�
@@ -120,6 +125,12 @@ public class DrawerView implements OnClickListener {
 				.findViewById(R.id.login_tx_username);
 		settingBtn = (View) localSlidingMenu.findViewById(R.id.setting_btn);
 		settingBtn.setOnClickListener(this);
+		feedBack = (View) localSlidingMenu.findViewById(R.id.feedback_btn);
+		feedBack.setOnClickListener(this);
+		((View) localSlidingMenu.findViewById(R.id.offline_btn))
+				.setOnClickListener(this);
+		((View) localSlidingMenu.findViewById(R.id.login_out))
+				.setOnClickListener(this);// 退出登陆账号
 		if (loginPlatName != null) {
 			loginQzone.setVisibility(View.GONE);
 			loginWeiBo.setVisibility(View.GONE);
@@ -141,10 +152,34 @@ public class DrawerView implements OnClickListener {
 			sdkHelper.login(SinaWeibo.NAME);
 			break;
 		case R.id.setting_btn:
+			System.out.println("click!!! ");
 			activity.startActivity(new Intent(activity, SettingsActivity.class));
+			break;
+		case R.id.offline_btn:// 收藏
+			activity.startActivity(new Intent(activity, FavorActivity.class));
+			break;
+		case R.id.feedback_btn:// 反馈
+			Toast.makeText(activity, "暂不支持哦！", Toast.LENGTH_SHORT).show();
+			break;
+		case R.id.login_out:// 退出登陆账号
+			sdkHelper.removeAccount();
+			localSlidingMenu.showContent();
+			imageLoader.clearDiskCache();
+			refreshLoginview();
+			break;
 		default:
 			break;
 		}
+	}
+
+	private void refreshLoginview() {
+		// TODO Auto-generated method stub
+		loginQzone.setVisibility(View.VISIBLE);
+		loginWeiBo.setVisibility(View.VISIBLE);
+		loginUserPhoto.setVisibility(View.GONE);
+		loginUserName.setText(R.string.left_drawer_no_login_tip);
+		loginQzone.setOnClickListener(this);
+		loginWeiBo.setOnClickListener(this);
 	}
 
 	/**

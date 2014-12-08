@@ -249,5 +249,14 @@ public class NewsEntity implements Serializable {
 	private Boolean likeStatus;
 	/** 感兴趣状态 */
 	private Boolean interestedStatue;
+	private String table;
+
+	public String getTable() {
+		return table;
+	}
+
+	public void setTable(String table) {
+		this.table = table;
+	}
 
 }

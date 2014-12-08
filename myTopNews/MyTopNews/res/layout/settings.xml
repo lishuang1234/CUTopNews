@@ -8,49 +8,39 @@
         android:id="@+id/title_bar"
         layout="@layout/title_bar" />
 
-    <!-- <com.ss.android.common.ui.view.SwipeOverlayFrameLayout -->
-    <!-- android:id="@+id/swipe_overlay" -->
-    <!-- android:layout_width="fill_parent" -->
-    <!-- android:layout_height="wrap_content" -->
-    <!-- android:layout_below="@id/title_bar" > -->
-
-    <ScrollView
+    <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_below="@id/title_bar" >
+        android:layout_height="match_parent"
+        android:layout_below="@id/title_bar"
+        android:gravity="center_horizontal"
+        android:orientation="vertical" >
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:gravity="center_horizontal"
-            android:orientation="vertical" >
+            android:orientation="vertical"
+            android:padding="20.0dip" >
 
             <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:padding="10.0dip" >
+                android:id="@+id/night_mode"
+                style="@style/setting_item_head"
+                android:visibility="gone" >
 
-                <LinearLayout
-                    android:id="@+id/night_mode"
-                    style="@style/setting_item_head"
-                    android:visibility="gone" >
+                <TextView
+                    android:id="@+id/night_mode_text"
+                    style="@style/setting_item_text"
+                    android:text="@string/setting_night_mode" />
 
-                    <TextView
-                        android:id="@+id/night_mode_text"
-                        style="@style/setting_item_text"
-                        android:text="@string/setting_night_mode" />
+                <View
+                    android:layout_width="0.0dip"
+                    android:layout_height="1.0dip"
+                    android:layout_weight="1.0" />
 
-                    <View
-                        android:layout_width="0.0dip"
-                        android:layout_height="1.0dip"
-                        android:layout_weight="1.0" />
-
-                    <CheckBox
-                        android:id="@+id/checkbox_night_mode"
-                        style="@style/setting_checkbox" />
-                </LinearLayout>
-
+                <CheckBox
+                    android:id="@+id/checkbox_night_mode"
+                    style="@style/setting_checkbox" />
+            </LinearLayout>
+            <!--
                 <LinearLayout
                     android:id="@+id/setting_list_mode"
                     style="@style/setting_item_head" >
@@ -69,238 +59,232 @@
                         android:id="@+id/checkbox_list_mode"
                         style="@style/setting_checkbox" />
                 </LinearLayout>
+            -->
 
-                <LinearLayout
-                    android:id="@+id/setting_font_size"
-                    style="@style/setting_item_center" >
+            <LinearLayout
+                android:id="@+id/setting_font_size"
+                style="@style/setting_item_center" >
 
-                    <TextView
-                        android:id="@+id/font_size_text"
-                        style="@style/setting_item_text"
-                        android:text="@string/setting_font_size" />
+                <TextView
+                    android:id="@+id/font_size_text"
+                    style="@style/setting_item_text"
+                    android:text="@string/setting_font_size" />
 
-                    <View
-                        android:layout_width="0.0dip"
-                        android:layout_height="1.0dip"
-                        android:layout_weight="1.0" />
+                <View
+                    android:layout_width="0.0dip"
+                    android:layout_height="1.0dip"
+                    android:layout_weight="1.0" />
 
-                    <TextView
-                        android:id="@+id/font_size"
-                        style="@style/setting_alt_text" />
+                <TextView
+                    android:id="@+id/font_size"
+                    style="@style/setting_alt_text" />
 
-                    <ImageView
-                        android:id="@+id/font_size_arrow"
-                        style="@style/setting_arrow" />
-                </LinearLayout>
+                <CheckBox
+                    android:id="@+id/checkbox_font_size"
+                    style="@style/setting_checkbox" />
+            </LinearLayout>
 
-                
+            <LinearLayout
+                android:id="@+id/setting_refresh_list"
+                style="@style/setting_item_center"
+                android:visibility="gone" >
 
-                <LinearLayout
-                    android:id="@+id/setting_refresh_list"
-                    style="@style/setting_item_center"
-                    android:visibility="gone" >
+                <TextView
+                    android:id="@+id/refresh_list_text"
+                    style="@style/setting_item_text"
+                    android:text="@string/setting_refresh_list" />
 
-                    <TextView
-                        android:id="@+id/refresh_list_text"
-                        style="@style/setting_item_text"
-                        android:text="@string/setting_refresh_list" />
+                <View
+                    android:layout_width="0.0dip"
+                    android:layout_height="1.0dip"
+                    android:layout_weight="1.0" />
 
-                    <View
-                        android:layout_width="0.0dip"
-                        android:layout_height="1.0dip"
-                        android:layout_weight="1.0" />
+                <TextView
+                    android:id="@+id/refresh_list_mode"
+                    style="@style/setting_alt_text" />
 
-                    <TextView
-                        android:id="@+id/refresh_list_mode"
-                        style="@style/setting_alt_text" />
+                <ImageView
+                    android:id="@+id/refresh_list_arrow"
+                    style="@style/setting_arrow" />
+            </LinearLayout>
 
-                    <ImageView
-                        android:id="@+id/refresh_list_arrow"
-                        style="@style/setting_arrow" />
-                </LinearLayout>
+            <LinearLayout
+                android:id="@+id/setting_load_image"
+                style="@style/setting_item_center" >
 
-                <LinearLayout
-                    android:id="@+id/setting_load_image"
-                    style="@style/setting_item_center" >
+                <TextView
+                    android:id="@+id/load_image_text"
+                    style="@style/setting_item_text"
+                    android:text="@string/setting_load_image" />
 
-                    <TextView
-                        android:id="@+id/load_image_text"
-                        style="@style/setting_item_text"
-                        android:text="@string/setting_load_image" />
+                <View
+                    android:layout_width="0.0dip"
+                    android:layout_height="1.0dip"
+                    android:layout_weight="1.0" />
 
-                    <View
-                        android:layout_width="0.0dip"
-                        android:layout_height="1.0dip"
-                        android:layout_weight="1.0" />
+                <TextView
+                    android:id="@+id/load_image_mode"
+                    style="@style/setting_alt_text" />
 
-                    <TextView
-                        android:id="@+id/load_image_mode"
-                        style="@style/setting_alt_text" />
+                <CheckBox
+                    android:id="@+id/checkbox_load_image_mode"
+                    style="@style/setting_checkbox" />
+            </LinearLayout>
 
-                    <ImageView
-                        android:id="@+id/load_image_arrow"
-                        style="@style/setting_arrow" />
-                </LinearLayout>
+            <LinearLayout
+                android:id="@+id/clear"
+                style="@style/setting_item_end" >
 
-                <LinearLayout
-                    android:id="@+id/clear"
-                    style="@style/setting_item_end" >
+                <TextView
+                    android:id="@+id/clear_text"
+                    style="@style/setting_item_text"
+                    android:text="@string/setting_clear" />
 
-                    <TextView
-                        android:id="@+id/clear_text"
-                        style="@style/setting_item_text"
-                        android:text="@string/setting_clear" />
+                <View
+                    android:layout_width="0.0dip"
+                    android:layout_height="1.0dip"
+                    android:layout_weight="1.0" />
 
-                    <View
-                        android:layout_width="0.0dip"
-                        android:layout_height="1.0dip"
-                        android:layout_weight="1.0" />
+                <TextView
+                    android:id="@+id/cache_size"
+                    style="@style/setting_alt_text"
+                    android:singleLine="true" />
 
-                    <TextView
-                        android:id="@+id/cache_size"
-                        style="@style/setting_alt_text"
-                        android:singleLine="true" />
+                <CheckBox
+                    android:id="@+id/checkbox_clear"
+                    style="@style/setting_checkbox" />
+            </LinearLayout>
 
-                    <ImageView
-                        android:id="@+id/clear_arrow"
-                        style="@style/setting_arrow" />
-                </LinearLayout>
+            <LinearLayout
+                android:id="@+id/notify"
+                style="@style/setting_item_head"
+                android:layout_marginTop="15.0dip" >
 
-                <LinearLayout
-                    android:id="@+id/notify"
-                    style="@style/setting_item_head"
-                    android:layout_marginTop="15.0dip" >
+                <TextView
+                    android:id="@+id/notify_text"
+                    style="@style/setting_item_text"
+                    android:text="@string/setting_notify" />
 
-                    <TextView
-                        android:id="@+id/notify_text"
-                        style="@style/setting_item_text"
-                        android:text="@string/setting_notify" />
+                <View
+                    android:layout_width="0.0dip"
+                    android:layout_height="1.0dip"
+                    android:layout_weight="1.0" />
 
-                    <View
-                        android:layout_width="0.0dip"
-                        android:layout_height="1.0dip"
-                        android:layout_weight="1.0" />
+                <CheckBox
+                    android:id="@+id/checkbox_notify"
+                    style="@style/setting_checkbox" />
+            </LinearLayout>
 
-                    <CheckBox
-                        android:id="@+id/checkbox_notify"
-                        style="@style/setting_checkbox" />
-                </LinearLayout>
+            <LinearLayout
+                android:id="@+id/close_shake_hand"
+                style="@style/setting_item_center"
+                android:visibility="gone" >
 
-                
+                <TextView
+                    style="@style/setting_item_text"
+                    android:text="@string/setting_close_shake_hand" />
 
-                
+                <View
+                    android:layout_width="0.0dip"
+                    android:layout_height="1.0dip"
+                    android:layout_weight="1.0" />
 
-                <LinearLayout
-                    android:id="@+id/close_shake_hand"
-                    style="@style/setting_item_center"
-                    android:visibility="gone" >
+                <CheckBox
+                    android:id="@+id/checkbox_close_shake_hand"
+                    style="@style/setting_checkbox" />
+            </LinearLayout>
 
-                    <TextView
-                        style="@style/setting_item_text"
-                        android:text="@string/setting_close_shake_hand" />
+            <LinearLayout
+                android:id="@+id/share_when_favor"
+                style="@style/setting_item_center" >
 
-                    <View
-                        android:layout_width="0.0dip"
-                        android:layout_height="1.0dip"
-                        android:layout_weight="1.0" />
+                <TextView
+                    android:id="@+id/share_when_favor_text"
+                    style="@style/setting_item_text"
+                    android:text="@string/setting_share_when_favor" />
 
-                    <CheckBox
-                        android:id="@+id/checkbox_close_shake_hand"
-                        style="@style/setting_checkbox" />
-                </LinearLayout>
+                <View
+                    android:layout_width="0.0dip"
+                    android:layout_height="1.0dip"
+                    android:layout_weight="1.0" />
 
-                <LinearLayout
-                    android:id="@+id/share_when_favor"
-                    style="@style/setting_item_center" >
+                <CheckBox
+                    android:id="@+id/checkbox_share_when_favor"
+                    style="@style/setting_checkbox" />
+            </LinearLayout>
 
-                    <TextView
-                        android:id="@+id/share_when_favor_text"
-                        style="@style/setting_item_text"
-                        android:text="@string/setting_share_when_favor" />
+            <LinearLayout
+                android:id="@+id/update"
+                style="@style/setting_item_center" >
 
-                    <View
-                        android:layout_width="0.0dip"
-                        android:layout_height="1.0dip"
-                        android:layout_weight="1.0" />
+                <TextView
+                    android:id="@+id/update_text"
+                    style="@style/setting_item_text"
+                    android:text="@string/setting_update" />
 
-                    <CheckBox
-                        android:id="@+id/checkbox_share_when_favor"
-                        style="@style/setting_checkbox" />
-                </LinearLayout>
+                <ImageView
+                    android:id="@+id/version_new"
+                    style="@style/setting_hint_new"
+                    android:visibility="gone" />
 
-                
+                <View
+                    android:layout_width="0.0dip"
+                    android:layout_height="1.0dip"
+                    android:layout_weight="1.0" />
 
-                <LinearLayout
-                    android:id="@+id/update"
-                    style="@style/setting_item_center" >
+                <TextView
+                    android:id="@+id/current_version"
+                    style="@style/setting_alt_text" />
 
-                    <TextView
-                        android:id="@+id/update_text"
-                        style="@style/setting_item_text"
-                        android:text="@string/setting_update" />
+                <ImageView
+                    android:id="@+id/update_arrow"
+                    style="@style/setting_arrow" />
+            </LinearLayout>
 
-                    <ImageView
-                        android:id="@+id/version_new"
-                        style="@style/setting_hint_new"
-                        android:visibility="gone" />
+            <LinearLayout
+                android:id="@+id/recommendation"
+                style="@style/setting_item_head"
+                android:layout_marginTop="15.0dip"
+                android:visibility="gone" >
 
-                    <View
-                        android:layout_width="0.0dip"
-                        android:layout_height="1.0dip"
-                        android:layout_weight="1.0" />
+                <TextView
+                    android:id="@+id/recommendation_text"
+                    style="@style/setting_item_text"
+                    android:text="@string/setting_recommend" />
 
-                    <TextView
-                        android:id="@+id/current_version"
-                        style="@style/setting_alt_text" />
+                <View
+                    android:layout_width="0.0dip"
+                    android:layout_height="1.0dip"
+                    android:layout_weight="1.0" />
 
-                    <ImageView
-                        android:id="@+id/update_arrow"
-                        style="@style/setting_arrow" />
-                </LinearLayout>
+                <ImageView
+                    android:id="@+id/recommendation_arrow"
+                    style="@style/setting_arrow" />
+            </LinearLayout>
 
-                <LinearLayout
-                    android:id="@+id/recommendation"
-                    style="@style/setting_item_head"
-                    android:layout_marginTop="15.0dip"
-                    android:visibility="gone" >
+            <LinearLayout
+                android:id="@+id/switch_domain"
+                style="@style/setting_item_center"
+                android:visibility="gone" >
 
-                    <TextView
-                        android:id="@+id/recommendation_text"
-                        style="@style/setting_item_text"
-                        android:text="@string/setting_recommend" />
+                <TextView
+                    android:id="@+id/switch_domain_text"
+                    style="@style/setting_item_text"
+                    android:text="@string/setting_switch_domain" />
 
-                    <View
-                        android:layout_width="0.0dip"
-                        android:layout_height="1.0dip"
-                        android:layout_weight="1.0" />
+                <View
+                    android:layout_width="0.0dip"
+                    android:layout_height="1.0dip"
+                    android:layout_weight="1.0" />
 
-                    <ImageView
-                        android:id="@+id/recommendation_arrow"
-                        style="@style/setting_arrow" />
-                </LinearLayout>
+                <CheckBox
+                    android:id="@+id/checkbox_switch_domain"
+                    style="@style/setting_checkbox" />
+            </LinearLayout>
 
-                <LinearLayout
-                    android:id="@+id/switch_domain"
-                    style="@style/setting_item_center"
-                    android:visibility="gone" >
-
-                    <TextView
-                        android:id="@+id/switch_domain_text"
-                        style="@style/setting_item_text"
-                        android:text="@string/setting_switch_domain" />
-
-                    <View
-                        android:layout_width="0.0dip"
-                        android:layout_height="1.0dip"
-                        android:layout_weight="1.0" />
-
-                    <CheckBox
-                        android:id="@+id/checkbox_switch_domain"
-                        style="@style/setting_checkbox" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/use_help"
+            <!--
+                   <LinearLayout
+                    android:id="@+id/about"
                     style="@style/setting_item_end" >
 
                     <TextView
@@ -317,17 +301,18 @@
                         android:id="@+id/use_help_arrow"
                         style="@style/setting_arrow" />
                 </LinearLayout>
-            </LinearLayout>
-
-            <TextView
-                android:id="@+id/copyright"
-                style="@style/setting_copyright" />
-
-            <TextView
-                android:id="@+id/release_info"
-                style="@style/setting_release_info" />
+            -->
         </LinearLayout>
-    </ScrollView>
+
+        <TextView
+            android:id="@+id/copyright"
+            style="@style/setting_copyright" />
+
+        <TextView
+            android:id="@+id/release_info"
+            style="@style/setting_release_info" />
+    </LinearLayout>
+
     <!-- </com.ss.android.common.ui.view.SwipeOverlayFrameLayout> -->
 
 </RelativeLayout>

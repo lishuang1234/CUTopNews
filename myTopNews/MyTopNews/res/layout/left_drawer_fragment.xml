@@ -223,40 +223,6 @@
                 android:id="@+id/offline_divider"
                 style="@style/left_drawer_item_line" />
 
-            <LinearLayout
-                android:id="@+id/app_activity_layout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:minHeight="50dp"
-                android:orientation="vertical" >
-
-                <RelativeLayout
-                    android:id="@+id/app_activity_btn"
-                    style="@style/left_drawer_item_layout" >
-
-                    <TextView
-                        android:id="@+id/app_activity_text"
-                        style="@style/left_drawer_item_text"
-                        android:layout_centerVertical="true"
-                        android:drawableLeft="@drawable/left_drawer_activity_selector"
-                        android:text="@string/left_drawer_item_activity" />
-
-                    <TextView
-                        android:id="@+id/top_appactivity_count"
-                        style="@style/left_drawer_count"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentTop="true"
-                        android:layout_marginLeft="25.0dip"
-                        android:layout_marginTop="6.0dip"
-                        android:layout_toRightOf="@id/app_activity_text"
-                        android:background="@drawable/left__drawer_count_bg" />
-                </RelativeLayout>
-
-                <ImageView style="@style/left_drawer_item_line" />
-            </LinearLayout>
-
             <RelativeLayout
                 android:id="@+id/setting_btn"
                 style="@style/left_drawer_item_layout" >
@@ -281,8 +247,43 @@
 
             <ImageView style="@style/left_drawer_item_line" />
 
+            <LinearLayout
+                android:id="@+id/app_activity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:minHeight="50dp"
+                android:orientation="vertical" >
+
+                <RelativeLayout
+                    android:id="@+id/app_about"
+                    style="@style/left_drawer_item_layout" >
+
+                    <TextView
+                        android:id="@+id/app_activity_text"
+                        style="@style/left_drawer_item_text"
+                        android:layout_centerVertical="true"
+                        android:drawableLeft="@drawable/left_drawer_activity_selector"
+                        android:text="@string/left_drawer_item_activity" />
+
+                    <TextView
+                        android:id="@+id/top_appactivity_count"
+                        style="@style/left_drawer_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentTop="true"
+                        android:layout_marginLeft="25.0dip"
+                        android:layout_marginTop="6.0dip"
+                        android:layout_toRightOf="@id/app_activity_text"
+                        android:background="@drawable/left__drawer_count_bg"
+                        android:visibility="gone" />
+                </RelativeLayout>
+
+                <ImageView style="@style/left_drawer_item_line" />
+            </LinearLayout>
+
             <RelativeLayout
-                android:id="@+id/appstore_btn"
+                android:id="@+id/login_out"
                 style="@style/left_drawer_item_layout"
                 android:visibility="visible" >
 
@@ -304,7 +305,8 @@
         android:layout_marginBottom="10.0dip"
         android:layout_marginLeft="19.0dip"
         android:gravity="center_vertical"
-        android:orientation="horizontal" >
+        android:orientation="horizontal"
+        android:visibility="gone" >
 
         <com.ls.view.SwitchButton
             android:id="@+id/night_mode_btn"
