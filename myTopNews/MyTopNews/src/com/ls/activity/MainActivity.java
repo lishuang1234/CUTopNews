@@ -3,10 +3,16 @@ package com.ls.activity;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.Gravity;
@@ -54,10 +60,12 @@ public class MainActivity extends FragmentActivity implements OnClickListener,
 	private List<NewsFragment> fragments;
 	private SlidingMenu mSlidingMenu;
 	private WeatherEntity wEntity;
-//	private ShareSDKHelper helper;
+	// private ShareSDKHelper helper;
+	private NewsFragmentPagerAdapter newsFragmentPagerAdapter;
 	private List<ChannelItem> userChannelList = new ArrayList<ChannelItem>();
-	//protected ImageLoader imageLoader = ImageLoader.getInstance();
-//	DisplayImageOptions options;
+	// protected ImageLoader imageLoader = ImageLoader.getInstance();
+	// DisplayImageOptions options;
+	private UpdateListView updateListView = new UpdateListView();
 	private Handler handler = new Handler() {
 
 		@Override
@@ -83,6 +91,9 @@ public class MainActivity extends FragmentActivity implements OnClickListener,
 		new GetWeather().start();
 		initView();
 		initSlidingMenu();
+		IntentFilter filter = new IntentFilter();
+		filter.addAction(Constants.UPDATE_LISTVIEW);
+		registerReceiver(updateListView, filter);
 
 	}
 
@@ -102,12 +113,22 @@ public class MainActivity extends FragmentActivity implements OnClickListener,
 			dataBundle.putInt("order_id", i);
 			NewsFragment newsFragment = new NewsFragment();
 			newsFragment.setArguments(dataBundle);
+
 			fragments.add(newsFragment);
+
 		}
-		NewsFragmentPagerAdapter newsFragmentPagerAdapter = new NewsFragmentPagerAdapter(
+		newsFragmentPagerAdapter = new NewsFragmentPagerAdapter(
 				getSupportFragmentManager(), fragments);
+
 		mViewPager.setAdapter(newsFragmentPagerAdapter);
 		mViewPager.setOnPageChangeListener(this);
+	}
+
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		unregisterReceiver(updateListView);
+		super.onDestroy();
 	}
 
 	private void initTabColumns() {
@@ -257,7 +278,24 @@ public class MainActivity extends FragmentActivity implements OnClickListener,
 			wEntity = Constants.getWeatherEntity("chongqing");
 			if (wEntity != null)
 				handler.sendEmptyMessage(1);
+		}
+	}
 
+	class UpdateListView extends BroadcastReceiver {
+
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			// TODO Auto-generated method stub
+			if (intent.getAction().equals(Constants.UPDATE_LISTVIEW)) {// 、更新
+				NewsFragment mFragment = fragments.get(intent.getIntExtra(
+						"fragment_position", 0));
+				// ((NewsFragment) newsFragmentPagerAdapter.getItem(intent
+				// .getIntExtra("fragment_position", 0))).updateState();
+				mFragment.updateState();
+				System.out.println("MianActivity:::::更新啦 fragment position:: "
+						+ intent.getIntExtra("fragment_position", 0));
+
+			}
 		}
 
 	}

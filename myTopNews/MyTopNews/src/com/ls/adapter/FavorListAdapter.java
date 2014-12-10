@@ -2,7 +2,10 @@ package com.ls.adapter;
 
 import java.util.List;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,10 +18,12 @@ import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ls.activity.MainActivity;
 import com.ls.bean.JsonNewsEntity;
 import com.ls.bean.NewsEntity;
 import com.ls.db.ChannelNewsDBUtil;
 import com.ls.mytopnews.R;
+import com.ls.tool.Constants;
 
 public class FavorListAdapter extends BaseAdapter implements OnClickListener {
 	private List<NewsEntity> newsEntities;
@@ -30,6 +35,7 @@ public class FavorListAdapter extends BaseAdapter implements OnClickListener {
 	private ChannelNewsDBUtil dbUtil;
 	private String table;
 	private NewsEntity entity;
+	private UpdateState updateState = new UpdateState();
 
 	public FavorListAdapter(List<NewsEntity> list, Context context) {
 		this.context = context;
@@ -37,6 +43,13 @@ public class FavorListAdapter extends BaseAdapter implements OnClickListener {
 		this.inflater = LayoutInflater.from(context);
 		dbUtil = ChannelNewsDBUtil.getInstance(context);
 		initPopwindow();
+		IntentFilter filter = new IntentFilter(Constants.UPDATE_FAVOR_ADAPTER);
+		context.registerReceiver(updateState, filter);
+	}
+
+	public void destroyReceiver() {
+		context.unregisterReceiver(updateState);
+
 	}
 
 	private void initPopwindow() {
@@ -125,10 +138,11 @@ public class FavorListAdapter extends BaseAdapter implements OnClickListener {
 
 	private void setDislike(int position) {
 		// TODO Auto-generated method stub
-		Toast.makeText(context.getApplicationContext(), "已取消收藏" + position,
+		Toast.makeText(context.getApplicationContext(), "已取消收藏",
 				Toast.LENGTH_SHORT).show();
 		popupWindow.dismiss();
-		NewsEntity entity = (NewsEntity) getItem(position);// 注意
+		// NewsEntity entity = (NewsEntity) getItem(position);// 注意
+		NewsEntity entity = newsEntities.get(position);// 注意
 		dbUtil.updateData(
 				entity.getTable(),
 				new JsonNewsEntity(entity.getTitle(), entity.getSource_url(),
@@ -139,6 +153,13 @@ public class FavorListAdapter extends BaseAdapter implements OnClickListener {
 		entity.setMark(22);
 		newsEntities.remove(entity);
 		notifyDataSetChanged();
+		Intent intent = new Intent(Constants.UPDATE_LISTVIEW);
+		System.out.println("发广播啦。。。Favorite");
+		int fragmentId = Constants.getFragmentId(entity.getTable());
+		if (fragmentId != -1) {
+			intent.putExtra("fragment_position", fragmentId);
+			context.sendBroadcast(intent);
+		}
 	}
 
 	private void showPop(View v) {
@@ -164,14 +185,21 @@ public class FavorListAdapter extends BaseAdapter implements OnClickListener {
 			// TODO Auto-generated method stub
 			showPop(v);
 			btn_dislike.setOnClickListener(new OnClickListener() {
-
 				@Override
 				public void onClick(View v) {
 					// TODO Auto-generated method stub
 					setDislike(position);
 				}
 			});
+		}
+	}
 
+	class UpdateState extends BroadcastReceiver {
+
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			// TODO Auto-generated method stub
+			setDislike(intent.getIntExtra("position", 0));// 更新收藏的数据
 		}
 
 	}

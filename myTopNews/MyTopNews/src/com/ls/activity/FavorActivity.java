@@ -23,6 +23,13 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 public class FavorActivity extends Activity {
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		adapter.destroyReceiver();
+		super.onDestroy();
+	}
+
 	private ListView favorList;
 	private FavorListAdapter adapter;
 	private ProgressBar progressBar;
@@ -60,14 +67,15 @@ public class FavorActivity extends Activity {
 		favorList = (ListView) findViewById(R.id.left_drawer_favor_lv_favor);
 		progressBar = (ProgressBar) findViewById(R.id.favor_progressbar);
 		back = (TextView) findViewById(R.id.back);
-		( (TextView) findViewById(R.id.title)).setText("已收藏新闻");
+		((TextView) findViewById(R.id.title)).setText("已收藏新闻");
 		back.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
+				// startActivity(new Intent(FavorActivity.this,
+				// MainActivity.class));
 				FavorActivity.this.finish();
-
 			}
 		});
 		favorList.setOnItemClickListener(new OnItemClickListener() {
@@ -79,7 +87,11 @@ public class FavorActivity extends Activity {
 
 				Intent intent = new Intent(FavorActivity.this,
 						DetailsActivity.class);
+				intent.putExtra("flag", 1);//
 				intent.putExtra("news", (NewsEntity) adapter.getItem(position));
+				intent.putExtra("table",
+						((NewsEntity) adapter.getItem(position)).getTable());
+				intent.putExtra("position", position);
 				startActivity(intent);
 
 			}

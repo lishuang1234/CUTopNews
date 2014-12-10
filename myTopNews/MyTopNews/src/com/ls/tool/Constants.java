@@ -27,7 +27,9 @@ public class Constants {
 	public static final String SETTING_NOTIFY = "notify";
 	public static final String SETTING_SHARE_WHEN_FAVOR = "shareWhenFavor";
 	public static final String SETTING_CLEAR = "clear";
-
+	public static final String UPDATE_ADAPTER = "com.ls.mytopnews.action.update_adapter";
+	public static final String UPDATE_LISTVIEW = "com.ls.mytopnews.action.update_listview";
+	public static final String UPDATE_FAVOR_ADAPTER = "com.ls.mytopnews.action.update_favor_adapter";
 	private List<String> newsImagesList;
 	private Context context;
 	private ChannelNewsDBUtil dbUtil;
@@ -36,7 +38,7 @@ public class Constants {
 	public static final int[] NEWS_URL_ID = { 1, 3, 4, 6, 7 };
 	public static final String[] REFRESH_NEWS = { "topnewsRe", "academynewsRe",
 			"classnewsRe", "medianewsRe", "specialnewsRe", "newsReAll" };
-	private static final String URL_PATH = "http://113.250.159.145/cquptnews/servlet/NewsServlet?action_flag=";
+	private static final String URL_PATH = "http://113.251.172.75/cquptnews/servlet/NewsServlet?action_flag=";
 
 	public Constants(Context context) {
 		this.context = context;
@@ -182,6 +184,7 @@ public class Constants {
 							+ "  " + j);
 					JsonNewsEntity jsonNewsEntity = jsonNewsEntities.get(j);
 					NewsEntity newsEntity = new NewsEntity();
+
 					newsEntity.setTitle(jsonNewsEntity.getTitle());
 					newsEntity.setPushTime(jsonNewsEntity.getPublishTime());
 					newsEntity.setSource_url(jsonNewsEntity.getSourceUrl());
@@ -190,6 +193,7 @@ public class Constants {
 					newsEntity.setPicTwo(jsonNewsEntity.getPicTwoUrl());
 					newsEntity.setPicThr(jsonNewsEntity.getPicThereUrl());
 					newsEntity.setTable(TABLE_NAME[i]);// 设置表名
+					newsEntity.setMark(4);
 					newsEntities.add(newsEntity);
 				}
 			}
@@ -229,4 +233,12 @@ public class Constants {
 		return wEntity;
 	}
 
+	public static int getFragmentId(String table) {
+		for (int i = 0; i < TABLE_NAME.length; i++) {
+			if (table.equals(TABLE_NAME[i])) {
+				return i;
+			}
+		}
+		return -1;
+	}
 }

@@ -4,12 +4,13 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import android.R.integer;
 import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.graphics.drawable.ColorDrawable;
-import android.net.NetworkInfo.DetailedState;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -31,7 +32,6 @@ import com.ls.bean.JsonNewsEntity;
 import com.ls.bean.NewsEntity;
 import com.ls.db.ChannelNewsDBUtil;
 import com.ls.mytopnews.R;
-import com.ls.service.NewsDetailService;
 import com.ls.tool.Constants;
 import com.ls.tool.DateTools;
 import com.ls.tool.Options;
@@ -60,6 +60,7 @@ public class NewsAdapter extends BaseAdapter implements HeaderAdapter,
 	private ShareSDKHelper sdkHelper;
 	private SharedPreferences sPreferences;
 	private boolean isFavorWhenShare;
+	private UpdateAdapter updateState = new UpdateAdapter();
 
 	public NewsAdapter(Activity activity, List<NewsEntity> newsList,
 			String table) {
@@ -77,6 +78,8 @@ public class NewsAdapter extends BaseAdapter implements HeaderAdapter,
 				Constants.SETTING_SHARE_WHEN_FAVOR, false);
 		initPopWindow();
 		initDateHead();
+		IntentFilter filter = new IntentFilter(Constants.UPDATE_ADAPTER);
+		activity.registerReceiver(updateState, filter);
 
 	}
 
@@ -533,5 +536,34 @@ public class NewsAdapter extends BaseAdapter implements HeaderAdapter,
 		}
 		int index = Arrays.binarySearch(mPositions.toArray(), position);
 		return index >= 0 ? index : -index - 2;
+	}
+
+	public void destroyReceiver() {
+		activity.unregisterReceiver(updateState);
+
+	}
+
+	class UpdateAdapter extends BroadcastReceiver {
+
+		@Override
+		public void onReceive(Context context, Intent intent) {
+			// TODO Auto-generated method stub
+			System.out.println("receiver::::::" + intent.getAction());
+			if (intent.getAction().equals(Constants.UPDATE_ADAPTER)) {
+				int position = intent.getIntExtra("position", 0);
+				System.out.println("收到的广播Position“”“" + position);
+				boolean isFavor = intent.getBooleanExtra("isFavor", false);
+
+				if (isFavor) {
+					getItem(position).setMark(4);
+					System.out.println("Adapter 要收藏啦！！！");
+				} else {
+					getItem(position).setMark(22);
+					System.out.println("Adapter 不收藏！！");
+				}
+				notifyDataSetChanged();
+			}
+		}
+
 	}
 }

@@ -43,12 +43,7 @@ public class BaseActivity extends Activity {
 		this.mNeedBackGesture = mNeedBackGesture;
 	}
 
-	/*
-	 * 返回
-	 */
-	public void doBack(View view) {
-		onBackPressed();
-	}
+	
 /**分发手勢监听*/
 	@Override
 	public boolean dispatchTouchEvent(MotionEvent ev) {

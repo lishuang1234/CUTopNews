@@ -580,17 +580,14 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
         public static final int white_point=0x7f0200e6;
     }
     public static final class id {
-        public static final int action_comment_count=0x7f0500bd;
+        public static final int action_comment_count=0x7f0500bc;
         public static final int action_favor=0x7f0500ba;
-        public static final int action_more=0x7f0500c2;
-        public static final int action_next=0x7f0500c0;
-        public static final int action_previous=0x7f0500bf;
-        public static final int action_refresh=0x7f0500c1;
-        public static final int action_repost=0x7f0500be;
-        public static final int action_settings=0x7f0500c4;
-        public static final int action_share=0x7f0500c3;
-        public static final int action_view_comment=0x7f0500bc;
-        public static final int action_write_comment=0x7f0500bb;
+        public static final int action_more=0x7f0500bf;
+        public static final int action_next=0x7f0500bd;
+        public static final int action_refresh=0x7f0500be;
+        public static final int action_settings=0x7f0500c1;
+        public static final int action_share=0x7f0500c0;
+        public static final int action_view_comment=0x7f0500bb;
         public static final int alt_mark=0x7f050059;
         public static final int app_about=0x7f05003b;
         public static final int app_activity=0x7f05003a;
@@ -949,11 +946,19 @@ or to a theme attribute in the form "<code>?[<i>package</i>:][<i>type</i>:]<i>na
 
 
 
+
+
+
+
     
 
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
             backward-compatibility can go here.
+
+
+
+
 
 
 

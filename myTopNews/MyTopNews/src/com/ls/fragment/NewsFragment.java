@@ -69,6 +69,10 @@ public class NewsFragment extends Fragment {
 						Intent intent = new Intent(mActivity,
 								DetailsActivity.class);
 						intent.putExtra("news", newsAdapter.getItem(position));
+						intent.putExtra("table", Constants.TABLE_NAME[orderId]);
+						intent.putExtra("position", position);
+						System.out.println("table:::"
+								+ Constants.TABLE_NAME[orderId]);
 						startActivity(intent);
 					}
 				});
@@ -123,6 +127,13 @@ public class NewsFragment extends Fragment {
 	}
 
 	@Override
+	public void onDestroyView() {
+		// TODO Auto-generated method stub
+		newsAdapter.destroyReceiver();
+		super.onDestroyView();
+	}
+
+	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
@@ -157,6 +168,10 @@ public class NewsFragment extends Fragment {
 		return view;
 	}
 
+	public void updateState() {
+		new Work().execute(Constants.TABLE_NAME[orderId], "0");
+	}
+
 	class Work extends AsyncTask<String, Integer, Integer> {
 		@Override
 		protected Integer doInBackground(String... params) {
@@ -182,5 +197,14 @@ public class NewsFragment extends Fragment {
 				handler.obtainMessage(REFRESH_NEWSLIST).sendToTarget();// 性能
 			}
 		}
+
 	}
+
+	@Override
+	public void onDestroy() {
+		// TODO Auto-generated method stub
+
+		super.onDestroy();
+	}
+
 }

@@ -2,8 +2,11 @@ package com.ls.activity;
 
 import java.util.ArrayList;
 
+import android.R.integer;
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
@@ -23,7 +26,9 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.ls.bean.JsonNewsEntity;
 import com.ls.bean.NewsEntity;
+import com.ls.db.ChannelNewsDBUtil;
 import com.ls.mytopnews.R;
 import com.ls.service.NewsDetailService;
 import com.ls.tool.Constants;
@@ -40,13 +45,19 @@ public class DetailsActivity extends BaseActivity implements OnClickListener {
 	private String news_source;
 	private String news_date;
 	private NewsEntity newsEntity;
-	private TextView action_comment_coun;
+	// private TextView action_comment_coun;
 	WebView webView;
 	private ImageView action_repost;
 	private ImageView action_refresh;
+	private ImageView action_favor;
 	private ShareSDKHelper sdkHelper;
 	private SharedPreferences sPreferences;
-	private SharedPreferences.Editor editor;
+	private String table;
+	private int position;
+	private int activityFlag;
+
+	private boolean isFavor;
+	private ChannelNewsDBUtil dbUtil;
 
 	private boolean isSupportZoom;// 是否放大字体
 
@@ -59,7 +70,7 @@ public class DetailsActivity extends BaseActivity implements OnClickListener {
 		sdkHelper = new ShareSDKHelper(DetailsActivity.this);
 		sPreferences = getSharedPreferences(Constants.SETTING,
 				Context.MODE_PRIVATE);
-		editor = sPreferences.edit();
+		dbUtil = ChannelNewsDBUtil.getInstance(getApplicationContext());
 		getData();
 		initView();
 		initWebView();
@@ -73,15 +84,21 @@ public class DetailsActivity extends BaseActivity implements OnClickListener {
 		title = (TextView) findViewById(R.id.title);
 		progressBar = (ProgressBar) findViewById(R.id.ss_htmlprogressbar);
 		customview_Layout = (FrameLayout) findViewById(R.id.comment_layout);
-		action_comment_coun = (TextView) findViewById(R.id.action_comment_count);// 底部栏目数量
-		action_repost = (ImageView) findViewById(R.id.action_repost);
+		// action_comment_coun = (TextView)
+		// findViewById(R.id.action_comment_count);// 底部栏目数量
+		action_repost = (ImageView) findViewById(R.id.action_view_comment);// 分想
 		action_refresh = (ImageView) findViewById(R.id.action_refresh);
+		action_favor = (ImageView) findViewById(R.id.action_favor);// 收藏状态
 		progressBar.setVisibility(View.VISIBLE);
 		title.setTextSize(13);
 		title.setVisibility(View.VISIBLE);
 		title.setText(news_url);
 		action_repost.setOnClickListener(this);
 		action_refresh.setOnClickListener(this);
+		action_favor.setOnClickListener(this);
+		if (isFavor) {// 是收藏
+			action_favor.setImageResource(R.drawable.ic_action_favor_on_normal);
+		}
 		// action_comment_coun.setText(String.valueOf(newsEntity.getCommentNum()));
 	}
 
@@ -118,12 +135,18 @@ public class DetailsActivity extends BaseActivity implements OnClickListener {
 
 	private void getData() {
 		// TODO Auto-generated method stub
+		activityFlag = getIntent().getIntExtra("flag", 0);// 判断从哪个Activity跳转的
+															// 1：收藏新闻 0：新闻列表
 		newsEntity = (NewsEntity) getIntent().getSerializableExtra("news");
+		table = getIntent().getStringExtra("table");
+		position = getIntent().getIntExtra("position", 0);
+		System.out.println(table);
 		news_url = newsEntity.getSource_url();
 		news_title = newsEntity.getTitle();
 		news_source = newsEntity.getSource();
 		news_date = DateTools.getSection(String.valueOf(newsEntity
 				.getPushTime()));
+		isFavor = newsEntity.getMark() == Constants.mark_favor ? true : false;
 	}
 
 	@Override
@@ -254,17 +277,22 @@ public class DetailsActivity extends BaseActivity implements OnClickListener {
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
 		switch (v.getId()) {
-		case R.id.action_repost:// 分享
+		case R.id.action_view_comment:// 分享
 			sdkHelper.shareToPlat(news_title, news_url);
 			break;
 		case R.id.action_refresh:// 刷新
 			new MyAsyncTask().execute(news_url, news_title, news_source + " "
 					+ news_date);
 			webView.reload();
+			break;
+		case R.id.action_favor:// 收藏
+			updateIsFavorState();
+			break;
 		default:
 			break;
 		}
 	}
+
 	//
 	// /**
 	// * 清除WebView缓存
@@ -322,5 +350,54 @@ public class DetailsActivity extends BaseActivity implements OnClickListener {
 	// // Log.e("tag", "delete file no exists " + file.getAbsolutePath());
 	// }
 	// }
+	public void doBack(View v) {
+		if (activityFlag == 1) {
+			if (isFavor) {
+			} else {
+				Intent intent = new Intent();
+				intent.setAction(Constants.UPDATE_FAVOR_ADAPTER);
+				intent.putExtra("position", position);
+				sendBroadcast(intent);
+			}
+		}
+		this.finish();
 
+	}
+
+	private void updateIsFavorState() {
+		// TODO Auto-generated method stub
+		Intent intent = new Intent();
+		int i = 0;
+		if (isFavor) {// 更新不在收藏
+			action_favor.setImageResource(R.drawable.ic_action_favor_normal);
+			isFavor = false;
+			i = 0;
+			intent.putExtra("isFavor", false);
+			System.out.println("更新啦！！");
+			newsEntity.setMark(22);
+		} else {
+			action_favor.setImageResource(R.drawable.ic_action_favor_on_normal);
+			intent.putExtra("isFavor", true);
+			i = 1;
+			newsEntity.setMark(4);
+			isFavor = true;
+		}
+		if (activityFlag == 1) {// 从收藏过来的，去更新收藏列表吧
+
+		} else if (activityFlag == 0) {// 去更新新聞列表吧
+			intent.setAction(Constants.UPDATE_ADAPTER);
+			intent.putExtra("position", position);
+			System.out.println("position::::" + position);
+			sendBroadcast(intent);
+		}
+
+		dbUtil.updateData(
+				table,
+				new JsonNewsEntity(newsEntity.getTitle(), newsEntity
+						.getSource_url(), newsEntity.getPushTime(), newsEntity
+						.getCommentNum(), newsEntity.getPicOne(), newsEntity
+						.getPicTwo(), newsEntity.getPicThr(), i),
+				"sourceUrl=?", new String[] { newsEntity.getSource_url() });
+
+	}
 }

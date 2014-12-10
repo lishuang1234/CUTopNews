@@ -34,45 +34,14 @@
             android:layout_weight="1" >
 
             <ImageView
-                android:id="@+id/action_write_comment"
-                style="@style/toolbar_action"
-                android:src="@drawable/ic_action_write" />
-        </FrameLayout>
-
-        <FrameLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1" >
-
-            <ImageView
                 android:id="@+id/action_view_comment"
                 style="@style/toolbar_action"
                 android:src="@drawable/ic_action_comment" />
-            <TextView
+
+            <TextView
                 android:id="@+id/action_comment_count"
-                style="@style/toolbar_action_comment" />
-        </FrameLayout>
-
-        <FrameLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1" >
-
-            <ImageView
-                android:id="@+id/action_repost"
-                style="@style/toolbar_action"
-                android:src="@drawable/ic_action_repost" />
-        </FrameLayout>
-
-        <FrameLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1" >
-
-            <ImageView
-                android:id="@+id/action_previous"
-                style="@style/toolbar_action"
-                android:src="@drawable/ic_action_previous" />
+                style="@style/toolbar_action_comment"
+                android:visibility="gone" />
         </FrameLayout>
 
         <FrameLayout
@@ -94,7 +63,7 @@
             <ImageView
                 android:id="@+id/action_refresh"
                 style="@style/toolbar_action"
-                android:src="@drawable/ic_action_report" />
+                android:src="@drawable/dynamic_refresh_pressed" />
         </FrameLayout>
 
         <FrameLayout
