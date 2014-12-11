@@ -59,26 +59,27 @@ public class MainActivity extends FragmentActivity implements OnClickListener,
 	private int columnSelectIndex;
 	private List<NewsFragment> fragments;
 	private SlidingMenu mSlidingMenu;
-	private WeatherEntity wEntity;
+	// private WeatherEntity wEntity;
 	// private ShareSDKHelper helper;
 	private NewsFragmentPagerAdapter newsFragmentPagerAdapter;
 	private List<ChannelItem> userChannelList = new ArrayList<ChannelItem>();
 	// protected ImageLoader imageLoader = ImageLoader.getInstance();
 	// DisplayImageOptions options;
 	private UpdateListView updateListView = new UpdateListView();
-	private Handler handler = new Handler() {
 
-		@Override
-		public void handleMessage(Message msg) {
-			// TODO Auto-generated method stub
-			super.handleMessage(msg);
-			if (msg.what == 1) {
-				top_weather.setText(wEntity.getCity() + "/"
-						+ wEntity.getTemper().split("：")[2]);
-			}
-		}
-
-	};
+	// private Handler handler = new Handler() {
+	//
+	// @Override
+	// public void handleMessage(Message msg) {
+	// // TODO Auto-generated method stub
+	// super.handleMessage(msg);
+	// if (msg.what == 1) {
+	// top_weather.setText(wEntity.getCity() + "/"
+	// + wEntity.getTemper().split("：")[2]);
+	// }
+	// }
+	//
+	// };
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -88,11 +89,12 @@ public class MainActivity extends FragmentActivity implements OnClickListener,
 		mItemWidth = mScreenWidth / 7;
 		// helper = new ShareSDKHelper(this);
 		// options = Options.getListOptions();
-		new GetWeather().start();
+		// new GetWeather().start();
 		initView();
 		initSlidingMenu();
 		IntentFilter filter = new IntentFilter();
 		filter.addAction(Constants.UPDATE_LISTVIEW);
+		filter.addAction(Constants.UPDATE_WEATHER);
 		registerReceiver(updateListView, filter);
 
 	}
@@ -213,11 +215,11 @@ public class MainActivity extends FragmentActivity implements OnClickListener,
 		// TODO Auto-generated method stub
 		switch (v.getId()) {
 		case R.id.top_weather:// ����more��ť
-			// if (mSlidingMenu.isSecondaryMenuShowing()) {
-			// mSlidingMenu.showContent();
-			// } else {
-			// mSlidingMenu.showSecondaryMenu();
-			// }
+			if (mSlidingMenu.isSecondaryMenuShowing()) {
+				mSlidingMenu.showContent();
+			} else {
+				mSlidingMenu.showSecondaryMenu();
+			}
 
 			break;
 		case R.id.top_head:// ����head
@@ -269,18 +271,6 @@ public class MainActivity extends FragmentActivity implements OnClickListener,
 		}
 	}
 
-	class GetWeather extends Thread {
-
-		@Override
-		public void run() {
-			// TODO Auto-generated method stub
-			super.run();
-			wEntity = Constants.getWeatherEntity("chongqing");
-			if (wEntity != null)
-				handler.sendEmptyMessage(1);
-		}
-	}
-
 	class UpdateListView extends BroadcastReceiver {
 
 		@Override
@@ -294,7 +284,8 @@ public class MainActivity extends FragmentActivity implements OnClickListener,
 				mFragment.updateState();
 				System.out.println("MianActivity:::::更新啦 fragment position:: "
 						+ intent.getIntExtra("fragment_position", 0));
-
+			} else if (intent.getAction().equals(Constants.UPDATE_WEATHER)) {
+				top_weather.setText(intent.getStringExtra("weather"));
 			}
 		}
 

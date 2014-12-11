@@ -2,13 +2,13 @@
 
     <!--
         Base application theme, dependent on API level. This theme is replaced
-        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
+        by AppBaseTheme from res/values-vXX/styles.xml on newer devices.
     -->
     <style name="AppBaseTheme" parent="android:Theme.Light">
         <!--
             Theme customizations available in newer API levels can go in
             res/values-vXX/styles.xml, while customizations related to
-            backward-compatibility can go here.
+            backward-compatibility can go here.
         -->
     </style>
 
@@ -223,6 +223,12 @@
         <item name="android:textColor">@color/title_text_color</item>
     </style>
 
+    <style name="right_drawer_tx_address_style">
+        <item name="android:textSize">25.0sp</item>
+        <item name="android:textColor">@color/title_text_color</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
     <style name="deail_title_text_style" parent="@style/title_text_style">
         <item name="android:textColor">@color/detail_title_text_color</item>
     </style>
@@ -338,6 +344,30 @@
         <item name="android:layout_marginRight">5.0dip</item>
         <item name="android:src">@drawable/icon_new</item>
         <item name="android:layout_weight">0.0</item>
+    </style>
+
+    <style name="right_drawer_other_weather_tubiao">
+        <item name="android:layout_width">27dp</item>
+        <item name="android:scaleType">fitXY</item>
+        <item name="android:layout_height">27dp</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:layout_marginTop">20dp</item>
+    </style>
+
+    <style name="right_drawer_other_weather_text">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/right_drawer_other</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+        <item name="android:layout_marginTop">20dp</item>
+    </style>
+
+    <style name="right_drawer_other_weather_ll">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:scaleType">fitXY</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_gravity">center_vertical</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:orientation">vertical</item>
     </style>
 
 </resources>

@@ -28,6 +28,8 @@ public class HttpUtils {
 			if (200 == responseCode) {
 				jsonString = changeInputStream(connection.getInputStream(),
 						"utf-8");
+			} else {
+				System.out.println("error");
 			}
 		} catch (Exception e) {
 			// TODO: handle exception

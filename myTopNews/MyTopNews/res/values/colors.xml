@@ -71,5 +71,6 @@
     <color name="setting_alt_text_normal">#ff666666</color>
     <color name="setting_alt_text_selected">#ffff0000</color>
     <color name="setting_copyright">#ff999999</color>
+    <color name="right_drawer_other">#2D8F42</color>
 
 </resources>

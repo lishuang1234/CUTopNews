@@ -129,8 +129,19 @@ public class NewsFragment extends Fragment {
 	@Override
 	public void onDestroyView() {
 		// TODO Auto-generated method stub
-		newsAdapter.destroyReceiver();
+
 		super.onDestroyView();
+	}
+
+	@Override
+	public void setUserVisibleHint(boolean isVisibleToUser) {
+		// TODO Auto-generated method stub
+		super.setUserVisibleHint(isVisibleToUser);
+
+		if (isVisibleToUser) {
+			new Work().execute(Constants.TABLE_NAME[orderId], "0");
+
+		}
 	}
 
 	@Override
@@ -164,7 +175,7 @@ public class NewsFragment extends Fragment {
 						new Work().execute(Constants.TABLE_NAME[orderId], "1");
 					}
 				}, orderId);
-		new Work().execute(Constants.TABLE_NAME[orderId], "0");
+
 		return view;
 	}
 

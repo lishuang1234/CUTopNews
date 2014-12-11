@@ -29,6 +29,7 @@ public class Constants {
 	public static final String SETTING_CLEAR = "clear";
 	public static final String UPDATE_ADAPTER = "com.ls.mytopnews.action.update_adapter";
 	public static final String UPDATE_LISTVIEW = "com.ls.mytopnews.action.update_listview";
+	public static final String UPDATE_WEATHER = "com.ls.mytopnews.action.update_weather";
 	public static final String UPDATE_FAVOR_ADAPTER = "com.ls.mytopnews.action.update_favor_adapter";
 	private List<String> newsImagesList;
 	private Context context;
@@ -38,7 +39,7 @@ public class Constants {
 	public static final int[] NEWS_URL_ID = { 1, 3, 4, 6, 7 };
 	public static final String[] REFRESH_NEWS = { "topnewsRe", "academynewsRe",
 			"classnewsRe", "medianewsRe", "specialnewsRe", "newsReAll" };
-	private static final String URL_PATH = "http://113.251.172.75/cquptnews/servlet/NewsServlet?action_flag=";
+	private static final String URL_PATH = "http://113.251.168.14/cquptnews/servlet/NewsServlet?action_flag=";
 
 	public Constants(Context context) {
 		this.context = context;
@@ -70,16 +71,21 @@ public class Constants {
 		String jsonString = HttpUtils.getJsonContent(URL_PATH + table + "&url="
 				+ url);
 		System.out.println(jsonString);
-		List<JsonNewsEntity> jsonNewsEntities = JsonTool.getNewsEntityList(
-				jsonString, JsonNewsEntity.class);
-		if (jsonNewsEntities != null & jsonNewsEntities.size() != 0) {
-			for (int i = 0; i < jsonNewsEntities.size(); i++) {// 数据库添加
-				System.out.println("添加数据库" + jsonNewsEntities.get(i));
-				dbUtil.insertData(table, jsonNewsEntities.get(i));
+		if (!jsonString.equals("")) {
+			List<JsonNewsEntity> jsonNewsEntities = JsonTool.getNewsEntityList(
+					jsonString, JsonNewsEntity.class);
+			if (jsonNewsEntities != null & jsonNewsEntities.size() != 0) {
+				for (int i = 0; i < jsonNewsEntities.size(); i++) {// 数据库添加
+					System.out.println("添加数据库" + jsonNewsEntities.get(i));
+					dbUtil.insertData(table, jsonNewsEntities.get(i));
+				}
 			}
+			return jsonNewsEntities;
+		} else {
+			return null;
 		}
 		// new AddDataToDB(jsonNewsEntities, table).start();
-		return jsonNewsEntities;
+
 	}
 
 	/**
@@ -103,6 +109,11 @@ public class Constants {
 				jsonNewsEntities = upDateNewsEntityList(table, jsonNewsEntities
 						.get(0).getSourceUrl());// 传递最新URL
 		} else {
+			return null;
+		}
+		if (jsonNewsEntities == null) {
+
+			System.out.println("下载：roor");
 			return null;
 		}
 		dbUtil.close();
@@ -184,7 +195,6 @@ public class Constants {
 							+ "  " + j);
 					JsonNewsEntity jsonNewsEntity = jsonNewsEntities.get(j);
 					NewsEntity newsEntity = new NewsEntity();
-
 					newsEntity.setTitle(jsonNewsEntity.getTitle());
 					newsEntity.setPushTime(jsonNewsEntity.getPublishTime());
 					newsEntity.setSource_url(jsonNewsEntity.getSourceUrl());
@@ -228,9 +238,12 @@ public class Constants {
 		String weatherJson = HttpUtils.getJsonContent(URL_PATH + "weatherRe"
 				+ "&city=" + city);
 		System.out.println("weatherJson:" + weatherJson);
-		WeatherEntity wEntity = JsonTool.getPerson(weatherJson,
-				WeatherEntity.class);
-		return wEntity;
+		if (!weatherJson.equals("")) {
+			WeatherEntity wEntity = JsonTool.getPerson(weatherJson,
+					WeatherEntity.class);
+			return wEntity;
+		} else
+			return null;
 	}
 
 	public static int getFragmentId(String table) {

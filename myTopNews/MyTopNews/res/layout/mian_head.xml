@@ -27,7 +27,8 @@
         android:layout_centerVertical="true"
         android:layout_marginLeft="2dp"
         android:layout_toRightOf="@id/title"
-        android:src="@drawable/refreshicon_titlebar" />
+        android:src="@drawable/refreshicon_titlebar"
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/top_weather"
@@ -39,6 +40,6 @@
         android:text="天气"
         android:textColor="@android:color/white"
         android:textSize="13sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"/>
 
 </RelativeLayout>

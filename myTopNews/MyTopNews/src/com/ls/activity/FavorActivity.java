@@ -104,7 +104,11 @@ public class FavorActivity extends Activity {
 		protected Integer doInBackground(String... params) {
 			// TODO Auto-generated method stub
 			Constants constants = new Constants(getApplicationContext());
+
 			newsEntities = constants.getFavorNews();
+			if (newsEntities == null && newsEntities.equals("")) {
+				return null;
+			}
 			adapter = new FavorListAdapter(newsEntities,
 					getApplicationContext());
 			System.out.println("adapter");

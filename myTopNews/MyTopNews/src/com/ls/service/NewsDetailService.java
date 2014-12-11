@@ -32,7 +32,7 @@ public class NewsDetailService {
 				element = document.getElementById("news_content");
 			}
 			if (element != null) {
-			 System.out.println("element:" + element.toString());
+				System.out.println("element:" + element.toString());
 				data = data + element.toString();
 			}
 			data = data + "</body>";
