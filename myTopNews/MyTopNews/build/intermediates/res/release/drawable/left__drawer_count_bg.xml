@@ -1,0 +1,6 @@
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="oval" >
+
+    <solid android:color="#ffffffff" />
+
+</shape><!-- From: file:/home/ls/androidDevelop/ls/CUTopNews/CUTopNews/myTopNews/MyTopNews/res/drawable/left__drawer_count_bg.xml -->

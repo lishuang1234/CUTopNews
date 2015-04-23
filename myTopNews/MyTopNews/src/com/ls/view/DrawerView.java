@@ -89,7 +89,7 @@ public class DrawerView implements OnClickListener {
 
 	};
 
-	private Handler handler = new Handler() {
+	private   Handler handler = new Handler() {
 
 		@Override
 		public void handleMessage(Message msg) {
@@ -113,7 +113,7 @@ public class DrawerView implements OnClickListener {
 
 	}
 
-	protected void setWeather() {
+	protected void  setWeather() {
 		// TODO Auto-generated method stub
 		String updateTime = weatherEntity.getUpdateTime().split(" ")[1];
 		String qiWen;

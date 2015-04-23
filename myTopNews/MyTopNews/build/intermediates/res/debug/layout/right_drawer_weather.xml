@@ -1,0 +1,279 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:id="@+id/right_drawer_rl_show_today"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:background="@drawable/bg_right_drawer_today_weather"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/right_drawer_tx_address"
+            style="@style/right_drawer_tx_address_style"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
+            android:layout_weight="1"
+            android:text="重庆" />
+
+        <LinearLayout
+            android:id="@+id/right_drawer_ll_today_weather"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_below="@id/right_drawer_tx_address"
+            android:layout_marginTop="10dp"
+            android:layout_weight="4"
+            android:orientation="horizontal" >
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.10" />
+
+            <LinearLayout
+                android:id="@+id/right_drawer_ll_tubiao"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical" >
+
+                <ImageView
+                    android:id="@+id/right_drawer_iv_today_tubiao"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center_horizontal"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/a_3" />
+
+                <TextView
+                    android:id="@+id/right_drawer_tx_today_shidu"
+                    style="@style/title_text_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:text="湿度 64%"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/right_drawer_tx_today_fengli"
+                    style="@style/title_text_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:text="西北风 1级"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical" >
+
+                <TextView
+                    android:id="@+id/right_drawer_tx_today_wengdu"
+                    android:layout_width="80dp"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center_horizontal"
+                    android:text="8℃"
+                    android:textColor="@android:color/white"
+                    android:textSize="50sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/right_drawer_tx_today_xingqi"
+                    style="@style/title_text_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:text="12/10 星期三"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/right_drawer_tx_today_update_time"
+                    style="@style/title_text_style"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginTop="10dp"
+                    android:text="10:29 更新"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.10" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/right_drawer_tx_today_chuanyi"
+            style="@style/item_abstract"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="12dp"
+            android:layout_weight="1"
+            android:text="
+穿衣指数：较冷，建议着厚外套加毛衣等服装。"
+            android:textColor="@android:color/white" />
+
+        <TextView
+            android:id="@+id/right_drawer_tx_today_yundong"
+            style="@style/item_abstract"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="10dp"
+            android:layout_weight="1"
+            android:text="
+运动指数：较适宜，推荐进行室内运动。"
+            android:textColor="@android:color/white" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="2.5"
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:id="@+id/right_drawer_ll_future_1"
+            style="@style/right_drawer_other_weather_ll" >
+
+            <TextView
+                android:id="@+id/right_drawer_tx_future_1_date"
+                style="@style/right_drawer_other_weather_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="12月11日" />
+
+            <ImageView
+                android:id="@+id/right_drawer_iv_future_1_tubiao"
+                style="@style/right_drawer_other_weather_tubiao"
+                android:src="@drawable/a_0" />
+
+            <TextView
+                android:id="@+id/right_drawer_tx_future_1_wether"
+                style="@style/right_drawer_other_weather_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="小雨" />
+
+            <TextView
+                android:id="@+id/right_drawer_tx_future_1_wendu"
+                style="@style/right_drawer_other_weather_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5/8℃" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/right_drawer_ll_future_2"
+            style="@style/right_drawer_other_weather_ll" >
+
+            <TextView
+                android:id="@+id/right_drawer_tx_future_2_date"
+                style="@style/right_drawer_other_weather_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="12月11日" />
+
+            <ImageView
+                android:id="@+id/right_drawer_iv_future_2_tubiao"
+                style="@style/right_drawer_other_weather_tubiao"
+                android:src="@drawable/a_0" />
+
+            <TextView
+                android:id="@+id/right_drawer_tx_future_2_wether"
+                style="@style/right_drawer_other_weather_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="小雨" />
+
+            <TextView
+                android:id="@+id/right_drawer_tx_future_2_wendu"
+                style="@style/right_drawer_other_weather_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5/8℃" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/right_drawer_ll_future_3"
+            style="@style/right_drawer_other_weather_ll" >
+
+            <TextView
+                android:id="@+id/right_drawer_tx_future_3_date"
+                style="@style/right_drawer_other_weather_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="12月11日" />
+
+            <ImageView
+                android:id="@+id/right_drawer_iv_future_3_tubiao"
+                style="@style/right_drawer_other_weather_tubiao"
+                android:src="@drawable/a_0" />
+
+            <TextView
+                android:id="@+id/right_drawer_tx_future_3_wether"
+                style="@style/right_drawer_other_weather_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="小雨" />
+
+            <TextView
+                android:id="@+id/right_drawer_tx_future_3_wendu"
+                style="@style/right_drawer_other_weather_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5/8℃" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/right_drawer_ll_future_4"
+            style="@style/right_drawer_other_weather_ll" >
+
+            <TextView
+                android:id="@+id/right_drawer_tx_future_4_date"
+                style="@style/right_drawer_other_weather_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="12月11日" />
+
+            <ImageView
+                android:id="@+id/right_drawer_iv_future_4_tubiao"
+                style="@style/right_drawer_other_weather_tubiao"
+                android:src="@drawable/a_0" />
+
+            <TextView
+                android:id="@+id/right_drawer_tx_future_4_wether"
+                style="@style/right_drawer_other_weather_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="小雨" />
+
+            <TextView
+                android:id="@+id/right_drawer_tx_future_4_wendu"
+                style="@style/right_drawer_other_weather_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="5/8℃" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout><!-- From: file:/home/ls/androidDevelop/ls/CUTopNews/CUTopNews/myTopNews/MyTopNews/res/layout/right_drawer_weather.xml -->

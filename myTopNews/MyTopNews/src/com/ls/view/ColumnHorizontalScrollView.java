@@ -1,6 +1,5 @@
 package com.ls.view;
 
-import android.R.integer;
 import android.app.Activity;
 import android.content.Context;
 import android.util.AttributeSet;
@@ -9,82 +8,85 @@ import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 
 public class ColumnHorizontalScrollView extends HorizontalScrollView {
-	private View ll_content;// ÕûÌå²¼¾ÖÎÄ¼ş
-	private View ll_more;// ¸ü¶àÑ¡Ïî²¼¾Ö
-	private View rl_column;// ÍÏ¶¯À¸²¼¾Ö
-	private ImageView leftImageView;// ×óÒõÓ°ÏÔÊ¾
-	private ImageView rightImageView;// ÓÒ
-	private int mScreenWidth;
-	private Activity mActivity;
+    private View ll_content;// æ•´ä½“å¸ƒå±€æ–‡ä»¶
+    private View ll_more;// æ›´å¤šé€‰é¡¹å¸ƒå±€
+    private View rl_column;// æ‹–åŠ¨æ å¸ƒå±€
+    private ImageView leftImageView;// å·¦é˜´å½±æ˜¾ç¤º
+    private ImageView rightImageView;// å³
+    private int mScreenWidth;
+    private Activity mActivity;
 
-	public ColumnHorizontalScrollView(Context context, AttributeSet attrs) {
-		super(context, attrs);
-		// TODO Auto-generated constructor stub
-	}
+    public ColumnHorizontalScrollView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        // TODO Auto-generated constructor stub
+    }
 
-	public ColumnHorizontalScrollView(Context context, AttributeSet attrs,
-			int defStyle) {
-		super(context, attrs, defStyle);
-		// TODO Auto-generated constructor stub
-	}
+    public ColumnHorizontalScrollView(Context context, AttributeSet attrs,
+                                      int defStyle) {
+        super(context, attrs, defStyle);
+        // TODO Auto-generated constructor stub
+    }
 
-	public ColumnHorizontalScrollView(Context context) {
-		super(context);
-		// TODO Auto-generated constructor stub
-	}
+    public ColumnHorizontalScrollView(Context context) {
+        super(context);
+        // TODO Auto-generated constructor stub
+    }
 
-	@Override
-	protected void onScrollChanged(int l, int t, int oldl, int oldt) {
-		// TODO Auto-generated method stub
-		super.onScrollChanged(l, t, oldl, oldt);
-		shade_ShowOrHide();
+    @Override
+    protected void onScrollChanged(int l, int t, int oldl, int oldt) {
+        // TODO Auto-generated method stub
+        super.onScrollChanged(l, t, oldl, oldt);
+        shade_ShowOrHide();
 
-	}
+    }
 
-	private void shade_ShowOrHide() {
-		if (!mActivity.isFinishing() && ll_content != null) {
-			measure(0, 0);
-			if (getMeasuredWidth() <= mScreenWidth) {// ¸Ã¿Ø¼ş¿í¶ÈĞ¡ÓÚÆÁÄ»¿í¶È
-				leftImageView.setVisibility(View.GONE);
-				rightImageView.setVisibility(View.GONE);
-				return;
-			}
-			if (getLeft() == 0) {
-				leftImageView.setVisibility(View.GONE);
-				rightImageView.setVisibility(View.VISIBLE);
-				return;
-			}
-			if (getRight() == getMeasuredWidth() - mScreenWidth) {
-				leftImageView.setVisibility(View.VISIBLE);
-				rightImageView.setVisibility(View.GONE);
+    /**
+     * è®¾ç½®å·¦å³é˜´å½±
+     */
+    private void shade_ShowOrHide() {
+        if (!mActivity.isFinishing() && ll_content != null) {
+            measure(0, 0);
+            if (getMeasuredWidth() <= mScreenWidth) {// è¯¥æ§ä»¶å®½åº¦å°äºå±å¹•å®½åº¦
+                leftImageView.setVisibility(View.GONE);
+                rightImageView.setVisibility(View.GONE);
+                return;
+            }
+            if (getLeft() == 0) {
+                leftImageView.setVisibility(View.GONE);
+                rightImageView.setVisibility(View.VISIBLE);
+                return;
+            }
+            if (getRight() == getMeasuredWidth() - mScreenWidth) {
+                leftImageView.setVisibility(View.VISIBLE);
+                rightImageView.setVisibility(View.GONE);
 
-				return;
-			}
-			leftImageView.setVisibility(View.VISIBLE);
-			rightImageView.setVisibility(View.VISIBLE);
+                return;
+            }
+            leftImageView.setVisibility(View.VISIBLE);
+            rightImageView.setVisibility(View.VISIBLE);
 
-		}
-	}
+        }
+    }
 
-	/**
-	 * ´«Èë×ÊÔ´
-	 * 
-	 * @param mActivity
-	 * @param ll_content
-	 * @param leftImageView
-	 * @param rightImageView
-	 * @param ll_more
-	 * @param rl_column
-	 */
-	public void setParam(Activity mActivity, View ll_content,
-			ImageView leftImageView, ImageView rightImageView, View ll_more,
-			View rl_column) {
-		this.mActivity = mActivity;
-		this.ll_content = ll_content;
-		this.leftImageView = leftImageView;
-		this.rightImageView = rightImageView;
-		this.ll_more = ll_more;
-		this.rl_column = rl_column;
-	}
+    /**
+     * ä¼ å…¥èµ„æº
+     *
+     * @param mActivity
+     * @param ll_content
+     * @param leftImageView
+     * @param rightImageView
+     * @param ll_more
+     * @param rl_column
+     */
+    public void setParam(Activity mActivity, View ll_content,
+                         ImageView leftImageView, ImageView rightImageView, View ll_more,
+                         View rl_column) {
+        this.mActivity = mActivity;
+        this.ll_content = ll_content;
+        this.leftImageView = leftImageView;
+        this.rightImageView = rightImageView;
+        this.ll_more = ll_more;
+        this.rl_column = rl_column;
+    }
 
 }

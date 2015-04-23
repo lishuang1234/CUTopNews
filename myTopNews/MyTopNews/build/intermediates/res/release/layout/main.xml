@@ -1,0 +1,80 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/activity_bg_color"
+    android:orientation="vertical" >
+
+    <include layout="@layout/mian_head" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="#fff3f3f3"
+        android:orientation="horizontal" >
+
+        <RelativeLayout
+            android:id="@+id/rl_column"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_weight="1" >
+
+            <com.ls.view.ColumnHorizontalScrollView
+                android:id="@+id/mColumnHori"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:scrollbars="none" >
+
+                <LinearLayout
+                    android:id="@+id/mRadioGroup_Content"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:orientation="horizontal"
+                    android:paddingLeft="10dp"
+                    android:paddingRight="10dp" >
+                </LinearLayout>
+            </com.ls.view.ColumnHorizontalScrollView>
+
+            <ImageView
+                android:id="@+id/shade_left"
+                android:layout_width="10dp"
+                android:layout_height="40dp"
+                android:layout_alignParentLeft="true"
+                android:background="@drawable/channel_leftblock"
+                android:visibility="visible" />
+
+            <ImageView
+                android:id="@+id/shade_right"
+                android:layout_width="10dp"
+                android:layout_height="40dp"
+                android:layout_alignParentRight="true"
+                android:background="@drawable/channel_rightblock"
+                android:visibility="visible" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_more_columns"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:visibility="gone" >
+
+            <ImageView
+                android:id="@+id/button_more_columns"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/channel_glide_day_bg"
+                android:visibility="gone" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/catagery_line"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:background="#ffdddddd" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/mViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout><!-- From: file:/home/ls/androidDevelop/ls/CUTopNews/CUTopNews/myTopNews/MyTopNews/res/layout/main.xml -->

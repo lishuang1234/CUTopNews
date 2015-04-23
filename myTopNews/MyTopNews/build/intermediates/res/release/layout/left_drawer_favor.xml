@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@color/activity_bg_color" >
+
+    <include
+        android:id="@+id/favor_title_bar"
+        layout="@layout/title_bar" />
+    <!-- 头部标题部分 -->
+
+    <ListView
+        android:id="@+id/left_drawer_favor_lv_favor"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/favor_title_bar"
+        android:divider="@android:color/transparent"
+        android:dividerHeight="1dp"
+        android:fadingEdge="none"
+        android:fastScrollEnabled="false"
+        android:scrollingCache="true" >
+    </ListView>
+
+    <ProgressBar
+        android:id="@+id/favor_progressbar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone" />
+
+</RelativeLayout><!-- From: file:/home/ls/androidDevelop/ls/CUTopNews/CUTopNews/myTopNews/MyTopNews/res/layout/left_drawer_favor.xml -->

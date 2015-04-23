@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="30dp" >
+
+    <ProgressBar
+        android:id="@+id/list_footer_progressbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="80dp" />
+
+    <TextView
+        android:id="@+id/list_footer_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="10dp"
+        android:layout_toRightOf="@id/list_footer_progressbar"
+        android:text="正在加载..." />
+
+</RelativeLayout><!-- From: file:/home/ls/androidDevelop/ls/CUTopNews/CUTopNews/myTopNews/MyTopNews/res/layout/list_footer_item.xml -->

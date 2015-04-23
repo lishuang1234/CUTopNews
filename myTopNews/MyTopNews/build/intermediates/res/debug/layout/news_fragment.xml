@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <ImageView
+        android:id="@+id/detail_loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:src="@drawable/detail_loading" />
+
+    <com.ls.view.RefreshableView
+        android:id="@+id/refreshable_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <com.ls.view.HeadListView
+            android:id="@+id/mListView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:divider="@android:color/transparent"
+            android:dividerHeight="0dp"
+            android:fastScrollEnabled="false"
+            android:scrollingCache="true"
+            android:fadingEdge="none"
+            android:scrollbars="vertical" >
+        </com.ls.view.HeadListView>
+    </com.ls.view.RefreshableView>
+
+    <include
+        android:id="@+id/list_header"
+        layout="@layout/list_item_section"
+        android:visibility="gone" />
+
+    <RelativeLayout
+        android:id="@+id/notify_view"
+        android:layout_width="match_parent"
+        android:layout_height="25dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/bg_notify"
+        android:visibility="gone" >
+
+        <TextView
+            android:id="@+id/notify_view_text"
+            style="@style/list_notify_view"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical" />
+
+        <LinearLayout
+            android:id="@+id/notify_view_cancle_layout"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            android:orientation="horizontal"
+            android:visibility="gone" >
+
+            <View
+                android:id="@+id/notify_view_divider"
+                style="@style/notify_view_divider"
+                android:layout_width="0.5dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center_vertical"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="5dp" />
+
+            <TextView
+                android:id="@+id/notify_view_cancle"
+                style="@style/list_notify_cancle_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent" />
+        </LinearLayout>
+    </RelativeLayout>
+
+    <TextView
+        android:id="@+id/empty_notify_view"
+        style="@style/list_notify_view"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+</RelativeLayout><!-- From: file:/home/ls/androidDevelop/ls/CUTopNews/CUTopNews/myTopNews/MyTopNews/res/layout/news_fragment.xml -->

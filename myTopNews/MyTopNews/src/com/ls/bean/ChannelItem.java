@@ -3,7 +3,7 @@ package com.ls.bean;
 import java.io.Serializable;
 
 /** 
- * ITEM的对应可序化队列属�?
+ * ITEM鐨勫搴斿彲搴忓寲闃熷垪灞炴?
  *  */
 public class ChannelItem implements Serializable {
 	/**
@@ -11,19 +11,19 @@ public class ChannelItem implements Serializable {
 	 */
 	private static final long serialVersionUID = -6465237897027410019L;
 	/** 
-	 * 栏目对应ID
+	 * 鏍忕洰瀵瑰簲ID
 	 *  */
 	public Integer id;
 	/** 
-	 * 栏目对应NAME
+	 * 鏍忕洰瀵瑰簲NAME
 	 *  */
 	public String name;
 	/** 
-	 * 栏目在整体中的排序顺�? rank
+	 * 鏍忕洰鍦ㄦ暣浣撲腑鐨勬帓搴忛『搴? rank
 	 *  */
 	public Integer orderId;
 	/** 
-	 * 栏目是否选中
+	 * 鏍忕洰鏄惁閫変腑
 	 *  */
 	public Integer selected;
 

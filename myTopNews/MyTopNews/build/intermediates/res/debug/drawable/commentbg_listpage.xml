@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_pressed="true"><layer-list>
+            <item android:bottom="6dp"><shape>
+                    <solid android:color="@color/feed_hint_pressed" />
+                </shape></item>
+        </layer-list></item>
+    <item><layer-list>
+            <item android:bottom="6dp"><shape>
+                    <solid android:color="@color/feed_hint_normal" />
+                </shape></item>
+        </layer-list></item>
+
+</selector><!-- From: file:/home/ls/androidDevelop/ls/CUTopNews/CUTopNews/myTopNews/MyTopNews/res/drawable/commentbg_listpage.xml -->

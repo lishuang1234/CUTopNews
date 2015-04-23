@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_selected="true"><shape>
+            <solid android:color="@color/left_drawer_item_pressed" />
+        </shape></item>
+    <item android:state_pressed="true"><shape>
+            <solid android:color="@color/left_drawer_item_pressed" />
+        </shape></item>
+    <item><shape>
+            <solid android:color="@color/left_drawer_item_normal" />
+        </shape></item>
+
+</selector><!-- From: file:/home/ls/androidDevelop/ls/CUTopNews/CUTopNews/myTopNews/MyTopNews/res/drawable/left_darawer_item_bg.xml -->

@@ -15,6 +15,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
+import android.webkit.JavascriptInterface;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebSettings.LayoutAlgorithm;
@@ -24,6 +25,7 @@ import android.webkit.WebViewClient;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.ls.bean.JsonNewsEntity;
@@ -39,7 +41,7 @@ import com.ls.tool.ShareSDKHelper;
 public class DetailsActivity extends BaseActivity implements OnClickListener {
 	private TextView title;
 	private ProgressBar progressBar;
-	private FrameLayout customview_Layout;
+	private RelativeLayout customview_Layout;
 	private String news_url;
 	private String news_title;
 	private String news_source;
@@ -80,10 +82,9 @@ public class DetailsActivity extends BaseActivity implements OnClickListener {
 		// TODO Auto-generated method stub
 		isSupportZoom = sPreferences.getBoolean(Constants.SETTING_FONT_SIZE,
 				false);
-		System.out.println("siSupportZoom:" + isSupportZoom);
 		title = (TextView) findViewById(R.id.title);
 		progressBar = (ProgressBar) findViewById(R.id.ss_htmlprogressbar);
-		customview_Layout = (FrameLayout) findViewById(R.id.comment_layout);
+		customview_Layout = (RelativeLayout) findViewById(R.id.comment_layout);
 		// action_comment_coun = (TextView)
 		// findViewById(R.id.action_comment_count);// 底部栏目数量
 		action_repost = (ImageView) findViewById(R.id.action_view_comment);// 分想
@@ -103,23 +104,23 @@ public class DetailsActivity extends BaseActivity implements OnClickListener {
 	}
 
 	@SuppressLint("ResourceAsColor")
-	private void initWebView() {
+    private void initWebView() {
 		webView = (WebView) findViewById(R.id.wb_details);
 		LayoutParams params = new LayoutParams(LayoutParams.MATCH_PARENT,
 				LayoutParams.MATCH_PARENT);
 		if (!TextUtils.isEmpty(news_url)) {
 			WebSettings webSettings = webView.getSettings();
-			webSettings.setJavaScriptEnabled(true);// 可以运行JS脚本
+			//webSettings.setJavaScriptEnabled(true);// 可以运行JS脚本
 			// webSettings.setTextZoom(120);//Sets the text zoom of the page in
 			// percent. The default is 100.
-			webSettings.setLayoutAlgorithm(LayoutAlgorithm.SINGLE_COLUMN);
+			webSettings.setLayoutAlgorithm(LayoutAlgorithm.NORMAL);
 			// webSettings.setUseWideViewPort(true); // 打开页面时， 自适应屏幕
 			webSettings.setLoadWithOverviewMode(true);// 打开页面时， 自适应屏幕
 			webSettings.setSupportZoom(isSupportZoom);// 用于设置webview放大
 			webSettings.setBuiltInZoomControls(isSupportZoom);
 			// webView.setBackgroundColor(R.color.transparent);
 			// webSettings.setCacheMode(WebSettings.LOAD_DEFAULT); // 设置 缓存模式
-			webSettings.setRenderPriority(RenderPriority.HIGH);
+			//webSettings.setRenderPriority(RenderPriority.HIGH);
 			webSettings.setBlockNetworkImage(true);
 
 			webView.addJavascriptInterface(new JSInterface(
@@ -146,7 +147,7 @@ public class DetailsActivity extends BaseActivity implements OnClickListener {
 		news_source = newsEntity.getSource();
 		news_date = DateTools.getSection(String.valueOf(newsEntity
 				.getPushTime()));
-		isFavor = newsEntity.getMark() == Constants.mark_favor ? true : false;
+		isFavor = newsEntity.getMark() == Constants.mark_favor;
 	}
 
 	@Override

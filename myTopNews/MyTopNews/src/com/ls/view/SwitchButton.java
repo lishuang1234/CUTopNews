@@ -31,29 +31,29 @@ public class SwitchButton extends CompoundButton {
 	private static final int SANS = 1;
 	private static final int SERIF = 2;
 	private static final int MONOSPACE = 3;
-	private static final int BOLD = 1;// ×ÖÌå¼Ó´Ö
-	private static final int ITALIC = 2;// ×ÖÌåÇãĞ±
+	private static final int BOLD = 1;// å­—ä½“åŠ ç²—
+	private static final int ITALIC = 2;// å­—ä½“å€¾æ–œ
 
-	private Drawable mThumbDrawable;// °´Å¥»¬¶¯±³¾°¹ì¼£
-	private Drawable mTrackDrawable;// °´Å¥
+	private Drawable mThumbDrawable;// æŒ‰é’®æ»‘åŠ¨èƒŒæ™¯è½¨è¿¹
+	private Drawable mTrackDrawable;// æŒ‰é’®
 
-	private int mThumbTextPadding;// °´Å¥ÉÏµÄ×ÖÌå´óĞ¡
-	private int mSwitchMinWidth;// °´Å¥×îĞ¡¿í¶È
-	private int mSwitchPadding;// °´Å¥PaddingÊôĞÔÖµ
+	private int mThumbTextPadding;// æŒ‰é’®ä¸Šçš„å­—ä½“å¤§å°
+	private int mSwitchMinWidth;// æŒ‰é’®æœ€å°å®½åº¦
+	private int mSwitchPadding;// æŒ‰é’®Paddingå±æ€§å€¼
 
-	private CharSequence mTextOnCharSequence;// °´Å¥´ò¿ªÊÇÏÖÊµµÄÎÄ×Ö
+	private CharSequence mTextOnCharSequence;// æŒ‰é’®æ‰“å¼€æ˜¯ç°å®çš„æ–‡å­—
 	private CharSequence mTextOffCharSequence;
 
-	private int mTouchMode;// °´Å¥´¥ÃşµÄÄ£Ê½
+	private int mTouchMode;// æŒ‰é’®è§¦æ‘¸çš„æ¨¡å¼
 	private int mTouchSlop;
 	private float mTouchX;
 	private float mTouchY;
 	private VelocityTracker mVelocityTracker = VelocityTracker.obtain();
 	private int mMinFlingVelocity;
-	private float mThumbPosition;// °´Å¥Î»ÖÃ
+	private float mThumbPosition;// æŒ‰é’®ä½ç½®
 	private int mThumbWidth;
 
-	private int mSwitchWidth;// ¿ª¹Ø¿Õ¼ä¿í¶È
+	private int mSwitchWidth;// å¼€å…³ç©ºé—´å®½åº¦
 	private int mSwitchHeight;
 
 	private int mSwitchLeft;
@@ -91,27 +91,27 @@ public class SwitchButton extends CompoundButton {
 		mTextPaint = new TextPaint(Paint.ANTI_ALIAS_FLAG);
 		Resources resources = getResources();
 		mTextPaint.density = resources.getDisplayMetrics().density;
-		//³õÊ¼»¯Ïà¹Ø×ÊÔ´
+		//åˆå§‹åŒ–ç›¸å…³èµ„æº
 		TypedArray ta = context.obtainStyledAttributes(attrs,
 				R.styleable.SwitchButton, defStyle, 0);
-		mThumbDrawable = ta.getDrawable(R.styleable.SwitchButton_thumb);// »ñÈ¡ÅäÖÃµÄ¹ì¼£×ÊÔ´
-		mTrackDrawable = ta.getDrawable(R.styleable.SwitchButton_track);// »ñÈ¡ÅäÖÃµÄ°´Å¥×ÊÔ´
-		mTextOffCharSequence = ta.getText(R.styleable.SwitchButton_textOff);// »ñÈ¡°´Å¥¹Ø±ÕÏÂµÄÎÄ×ÖÏÔÊ¾
-		mTextOnCharSequence = ta.getText(R.styleable.SwitchButton_textOn);// »ñÈ¡°´Å¥´ò¿ªÊ±ºòµÄÎÄ×ÖÏÔÊ¾
+		mThumbDrawable = ta.getDrawable(R.styleable.SwitchButton_thumb);// è·å–é…ç½®çš„è½¨è¿¹èµ„æº
+		mTrackDrawable = ta.getDrawable(R.styleable.SwitchButton_track);// è·å–é…ç½®çš„æŒ‰é’®èµ„æº
+		mTextOffCharSequence = ta.getText(R.styleable.SwitchButton_textOff);// è·å–æŒ‰é’®å…³é—­ä¸‹çš„æ–‡å­—æ˜¾ç¤º
+		mTextOnCharSequence = ta.getText(R.styleable.SwitchButton_textOn);// è·å–æŒ‰é’®æ‰“å¼€æ—¶å€™çš„æ–‡å­—æ˜¾ç¤º
 		mThumbTextPadding = ta.getDimensionPixelSize(
-				R.styleable.SwitchButton_thumbTextPadding, 0);// »ñÈ¡ÅäÖÃµÄ°´Å¥µÄÎÄ×Ö´óĞ¡
+				R.styleable.SwitchButton_thumbTextPadding, 0);// è·å–é…ç½®çš„æŒ‰é’®çš„æ–‡å­—å¤§å°
 		mSwitchMinWidth = ta.getDimensionPixelSize(
-				R.styleable.SwitchButton_switchMinWidth, 0);// »ñÈ¡ÅäÖÃÖĞµÄ¿Ø¼ş×îĞ¡¿í¶È
+				R.styleable.SwitchButton_switchMinWidth, 0);// è·å–é…ç½®ä¸­çš„æ§ä»¶æœ€å°å®½åº¦
 		mSwitchPadding = ta.getDimensionPixelSize(
-				R.styleable.SwitchButton_switchPadding, 0);// »ñÈ¡ÅäÖÃÎÄ¼ş¿Ø¼şµÄPaddingÊôĞÔ
+				R.styleable.SwitchButton_switchPadding, 0);// è·å–é…ç½®æ–‡ä»¶æ§ä»¶çš„Paddingå±æ€§
 		int appearance = ta.getResourceId(
-				R.styleable.SwitchButton_switchTextAppearance, 0);// »ñÈ¡ÅäÖÃÎÄ¼şÖĞµÄÏÔÊ¾×ÖÌå¸ñÊ½
+				R.styleable.SwitchButton_switchTextAppearance, 0);// è·å–é…ç½®æ–‡ä»¶ä¸­çš„æ˜¾ç¤ºå­—ä½“æ ¼å¼
 		if (appearance != 0) {
-			setSwitchAppearance(context, appearance);// ÉèÖÃ×ÖÌåÊôĞÔ
+			setSwitchAppearance(context, appearance);// è®¾ç½®å­—ä½“å±æ€§
 		}
 		ViewConfiguration viewConfiguration = ViewConfiguration.get(context);
-		mTouchSlop = viewConfiguration.getScaledTouchSlop();// »ñµÃÄÜ¹»½øĞĞÊÖÊÆ»¬¶¯µÄ¾àÀë
-		mMinFlingVelocity = viewConfiguration.getScaledMinimumFlingVelocity();// »ñµÃÔÊĞíÖ´ĞĞÒ»¸öflingÊÖÊÆ¶¯×÷µÄ×îĞ¡ËÙ¶ÈÖµ
+		mTouchSlop = viewConfiguration.getScaledTouchSlop();// è·å¾—èƒ½å¤Ÿè¿›è¡Œæ‰‹åŠ¿æ»‘åŠ¨çš„è·ç¦»
+		mMinFlingVelocity = viewConfiguration.getScaledMinimumFlingVelocity();// è·å¾—å…è®¸æ‰§è¡Œä¸€ä¸ªflingæ‰‹åŠ¿åŠ¨ä½œçš„æœ€å°é€Ÿåº¦å€¼
 		refreshDrawableState();
 		setChecked(isChecked());
 		ta.recycle();
@@ -124,21 +124,21 @@ public class SwitchButton extends CompoundButton {
 		invalidate();
 	}
 /**
- * °´Å¥ÔË¶¯·¶Î§
+ * æŒ‰é’®è¿åŠ¨èŒƒå›´
  * @return
  */
 	private int getThumbScrollRange() {
 		// TODO Auto-generated method stub
 		if (mThumbDrawable == null)
 			return 0;
-		mTrackDrawable.getPadding(mTempRect);// £¿£¿£¿£¿£¿£¿£¿£¿
+		mTrackDrawable.getPadding(mTempRect);// ï¼Ÿï¼Ÿï¼Ÿï¼Ÿï¼Ÿï¼Ÿï¼Ÿï¼Ÿ
 		return mSwitchWidth - mThumbWidth - mTempRect.left - mTempRect.right;// //???????????????
 	}
 
 	private void setSwitchAppearance(Context context, int appearance) {
 		// TODO Auto-generated method stub
 		TypedArray ta = context.obtainStyledAttributes(appearance,
-				R.styleable.TextApperance);// ²ÎÊı1£ºËùĞèÑùÊ½×ÊÔ´£¬²ÎÊı2£ºÏêÏ¸ÑùÊ½×ÊÔ´¼¯ºÏ
+				R.styleable.TextApperance);// å‚æ•°1ï¼šæ‰€éœ€æ ·å¼èµ„æºï¼Œå‚æ•°2ï¼šè¯¦ç»†æ ·å¼èµ„æºé›†åˆ
 		ColorStateList colorStateList;
 		int ts;
 		colorStateList = ta
@@ -149,7 +149,7 @@ public class SwitchButton extends CompoundButton {
 		} else {
 			mTextColorStateList = getTextColors();
 		}
-		ts = ta.getDimensionPixelSize(R.styleable.TextApperance_textSize, 0);// »ñÈ¡×ÖÌåµÄ´óĞ¡
+		ts = ta.getDimensionPixelSize(R.styleable.TextApperance_textSize, 0);// è·å–å­—ä½“çš„å¤§å°
 		if (ts != 0) {
 			if (ts != mTextPaint.getTextSize()) {
 				mTextPaint.setTextSize(ts);
@@ -168,13 +168,13 @@ public class SwitchButton extends CompoundButton {
 		Typeface tf = null;
 		switch (typeFaceIndex) {
 		case SANS:
-			tf = Typeface.SANS_SERIF;// Ä£ÈËÎï³ÂÏÍ×ÖÌå·ç¸ñ
+			tf = Typeface.SANS_SERIF;// æ¨¡äººç‰©é™ˆè´¤å­—ä½“é£æ ¼
 			break;
 		case SERIF:
-			tf = Typeface.SERIF;// Ä¬ÈÏµÄ³ÄÏß×ÖÌå·ç¸ñ
+			tf = Typeface.SERIF;// é»˜è®¤çš„è¡¬çº¿å­—ä½“é£æ ¼
 			break;
 		case MONOSPACE:
-			tf = Typeface.MONOSPACE;// Ä¬ÈÏµÄµÈ¿í×ÖÌå·ç¸ñ
+			tf = Typeface.MONOSPACE;// é»˜è®¤çš„ç­‰å®½å­—ä½“é£æ ¼
 			break;
 		default:
 			break;
@@ -189,11 +189,11 @@ public class SwitchButton extends CompoundButton {
 				tf = Typeface.defaultFromStyle(styleIndex);
 			} else
 				tf = Typeface.create(tf, styleIndex);
-			setSwitchTypeFace(tf);// ÉèÖÃTYpe
+			setSwitchTypeFace(tf);// è®¾ç½®TYpe
 			int typeFaceStyle = tf != null ? tf.getStyle() : 0;
 			int need = styleIndex & ~typeFaceStyle;
 			mTextPaint.setFakeBoldText((need & Typeface.BOLD) != 0);
-			mTextPaint.setTextSkewX((need & Typeface.ITALIC) != 0 ? -0.25f : 0);// ÉèÖÃ×ÖÌåÇãĞ±
+			mTextPaint.setTextSkewX((need & Typeface.ITALIC) != 0 ? -0.25f : 0);// è®¾ç½®å­—ä½“å€¾æ–œ
 		} else {
 			mTextPaint.setFakeBoldText(false);
 			mTextPaint.setTextSkewX(0);
@@ -215,23 +215,23 @@ public class SwitchButton extends CompoundButton {
 	protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
 		// TODO Auto-generated method stub
 		super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-		final int widthMode = MeasureSpec.getMode(widthMeasureSpec);//Œ’¶ÈÄ£Ê½
-		final int heightMode = MeasureSpec.getMode(heightMeasureSpec);//¸ß¶ÈÄ£Ê½
+		final int widthMode = MeasureSpec.getMode(widthMeasureSpec);//å¯¬åº¦æ¨¡å¼
+		final int heightMode = MeasureSpec.getMode(heightMeasureSpec);//é«˜åº¦æ¨¡å¼
 		int widthSize = MeasureSpec.getSize(widthMeasureSpec);
 		int heightSize = MeasureSpec.getSize(heightMeasureSpec);
 		if (mOffLayout == null) {
-			mOffLayout = maleLyout(mTextOffCharSequence);//ĞÂ½¨²¼¾Ö
+			mOffLayout = maleLyout(mTextOffCharSequence);//æ–°å»ºå¸ƒå±€
 		}
 		if (mOnLayout == null) {
 			mOnLayout = maleLyout(mTextOnCharSequence);
 		}
 		mTrackDrawable.getPadding(mTempRect);
 		final int maxTextWidth = Math.max(mOffLayout.getWidth(),
-				mOnLayout.getWidth());//×î¿í×ÖÌå²¼¾Ö
+				mOnLayout.getWidth());//æœ€å®½å­—ä½“å¸ƒå±€
 		final int switchWidth = Math.max(mSwitchMinWidth, maxTextWidth * 2
 				+ mThumbTextPadding * 4 + mTempRect.left + mTempRect.right);
-		final int switchHeight = mTrackDrawable.getIntrinsicHeight();// ¶ÔÏóÄÚÔÚµÄ¸ß¶È
-		mThumbWidth = mThumbTextPadding * 2 + maxTextWidth;// °´Å¥¿í¶È
+		final int switchHeight = mTrackDrawable.getIntrinsicHeight();// å¯¹è±¡å†…åœ¨çš„é«˜åº¦
+		mThumbWidth = mThumbTextPadding * 2 + maxTextWidth;// æŒ‰é’®å®½åº¦
 		switch (widthMode) {
 		case MeasureSpec.AT_MOST:
 			widthSize = Math.min(widthSize, switchWidth);
@@ -259,18 +259,18 @@ public class SwitchButton extends CompoundButton {
 
 		mSwitchWidth = switchWidth;
 		mSwitchHeight = switchHeight;
-		final int measuredHeiht = getMeasuredHeight();// »áµÄ¿Ø¼ş¸ß¶È
+		final int measuredHeiht = getMeasuredHeight();// ä¼šçš„æ§ä»¶é«˜åº¦
 		if (measuredHeiht < switchHeight) {
 			setMeasuredDimension(getMeasuredWidth(), switchHeight);
 		}
 	}
 
 	/**
-	 * ²ÎÊıº¬Òå£º 1.×Ö·û´®×Ó×ÊÔ´ 2 .»­±Ê¶ÔÏó 3.layoutµÄ¿í¶È£¬×Ö·û´®³¬³ö¿í¶ÈÊ±×Ô¶¯»»ĞĞ¡£
-	 * 4.layoutµÄÑùÊ½£¬ÓĞALIGN_CENTER£¬ ALIGN_NORMAL£¬ ALIGN_OPPOSITE ÈıÖÖ¡£
-	 * 5.Ïà¶ÔĞĞ¼ä¾à£¬Ïà¶Ô×ÖÌå´óĞ¡£¬1.5f±íÊ¾ĞĞ¼ä¾àÎª1.5±¶µÄ×ÖÌå¸ß¶È¡£ 6.Ïà¶ÔĞĞ¼ä¾à£¬0±íÊ¾0¸öÏñËØ¡£ Êµ¼ÊĞĞ¼ä¾àµÈÓÚÕâÁ½ÕßµÄºÍ¡£
-	 * 7.»¹²»ÖªµÀÊÇÊ²Ã´ÒâË¼£¬²ÎÊıÃûÊÇboolean includepad¡£
-	 * ĞèÒªÖ¸³öµÄÊÇÕâ¸ölayoutÊÇÄ¬ÈÏ»­ÔÚCanvasµÄ(0,0)µãµÄ£¬Èç¹ûĞèÒªµ÷ÕûÎ»ÖÃÖ»ÄÜÔÚdrawÖ®Ç°ÒÆCanvasµÄÆğÊ¼×ø±ê
+	 * å‚æ•°å«ä¹‰ï¼š 1.å­—ç¬¦ä¸²å­èµ„æº 2 .ç”»ç¬”å¯¹è±¡ 3.layoutçš„å®½åº¦ï¼Œå­—ç¬¦ä¸²è¶…å‡ºå®½åº¦æ—¶è‡ªåŠ¨æ¢è¡Œã€‚
+	 * 4.layoutçš„æ ·å¼ï¼Œæœ‰ALIGN_CENTERï¼Œ ALIGN_NORMALï¼Œ ALIGN_OPPOSITE ä¸‰ç§ã€‚
+	 * 5.ç›¸å¯¹è¡Œé—´è·ï¼Œç›¸å¯¹å­—ä½“å¤§å°ï¼Œ1.5fè¡¨ç¤ºè¡Œé—´è·ä¸º1.5å€çš„å­—ä½“é«˜åº¦ã€‚ 6.ç›¸å¯¹è¡Œé—´è·ï¼Œ0è¡¨ç¤º0ä¸ªåƒç´ ã€‚ å®é™…è¡Œé—´è·ç­‰äºè¿™ä¸¤è€…çš„å’Œã€‚
+	 * 7.è¿˜ä¸çŸ¥é“æ˜¯ä»€ä¹ˆæ„æ€ï¼Œå‚æ•°åæ˜¯boolean includepadã€‚
+	 * éœ€è¦æŒ‡å‡ºçš„æ˜¯è¿™ä¸ªlayoutæ˜¯é»˜è®¤ç”»åœ¨Canvasçš„(0,0)ç‚¹çš„ï¼Œå¦‚æœéœ€è¦è°ƒæ•´ä½ç½®åªèƒ½åœ¨drawä¹‹å‰ç§»Canvasçš„èµ·å§‹åæ ‡
 	 * canvas.translate(x,y);
 	 * 
 	 * @param mTextCharSequence
@@ -278,7 +278,7 @@ public class SwitchButton extends CompoundButton {
 	 */
 	private Layout maleLyout(CharSequence mTextCharSequence) {
 		// TODO Auto-generated method stub
-		System.out.println("text£º" + mTextCharSequence);
+		System.out.println("textï¼š" + mTextCharSequence);
 		return new StaticLayout(mTextCharSequence, mTextPaint,
 				(int) Math.ceil(Layout.getDesiredWidth(mTextCharSequence,
 						mTextPaint)), Layout.Alignment.ALIGN_NORMAL, 1f, 0,
@@ -290,7 +290,7 @@ public class SwitchButton extends CompoundButton {
 			int bottom) {
 		// TODO Auto-generated method stub
 		super.onLayout(changed, left, top, right, bottom);
-		mThumbPosition = isChecked() ? getThumbScrollRange() : 0;//³õÊ¼»¯µÄ°´Å¥Î»ÖÃ
+		mThumbPosition = isChecked() ? getThumbScrollRange() : 0;//åˆå§‹åŒ–çš„æŒ‰é’®ä½ç½®
 		int switchRight = getWidth() - getPaddingRight();
 		int switchLeft = switchRight - mSwitchWidth;
 		int switchTop = 0;
@@ -310,7 +310,7 @@ public class SwitchButton extends CompoundButton {
 		default:
 			break;
 		}
-		//»ñÈ¡¿Ø¼şÉÏÏÂ×óÓÒµÄÎ»ÖÃ
+		//è·å–æ§ä»¶ä¸Šä¸‹å·¦å³çš„ä½ç½®
 		mSwitchLeft = switchLeft;
 		mSwitchTop = switchTop;
 		mSwitchBottom = switchBottom;
@@ -328,31 +328,31 @@ public class SwitchButton extends CompoundButton {
 		mTrackDrawable.setBounds(switchLeft, switchTop, switchRight,
 				switchBottom);
 		mTrackDrawable.draw(canvas);
-		canvas.save();// saveºÍrestoreÖ®¼ä£¬ÍùÍù¼ĞÔÓµÄÊÇ¶ÔCanvasµÄÌØÊâ²Ù×÷¡£
+		canvas.save();// saveå’Œrestoreä¹‹é—´ï¼Œå¾€å¾€å¤¹æ‚çš„æ˜¯å¯¹Canvasçš„ç‰¹æ®Šæ“ä½œã€‚
 		mTrackDrawable.getPadding(mTempRect);
-		//¹ì¼£·¶Î§µÄÉÏÏÂ×óÓÒÎ»ÖÃ
+		//è½¨è¿¹èŒƒå›´çš„ä¸Šä¸‹å·¦å³ä½ç½®
 		int switchInnerLeft = switchLeft + mTempRect.left;
 		int switchInnerTop = switchTop + mTempRect.top;
 		int switchInnerRight = switchRight - mTempRect.right;
 		int switchInnerBottom = switchBottom - mTempRect.bottom;
 		canvas.clipRect(switchInnerLeft, switchInnerTop, switchInnerRight,
-				switchInnerBottom);// ²Ã¼ô¹ì¼£ÏÔÊ¾ÇøÓò
-		mThumbDrawable.getPadding(mTempRect);// °´Å¥
+				switchInnerBottom);// è£å‰ªè½¨è¿¹æ˜¾ç¤ºåŒºåŸŸ
+		mThumbDrawable.getPadding(mTempRect);// æŒ‰é’®
 		final int thumbPos = (int) (mThumbPosition + 0.5f);
 		int thumbLeft = switchInnerLeft + thumbPos - mTempRect.left;
 		int thumbRight = switchInnerLeft + thumbPos + mTempRect.right
 				+ mThumbWidth;
 		mThumbDrawable.setBounds(thumbLeft, switchInnerTop, thumbRight,
-				switchInnerBottom);//Î§ÈÆ°´Å¥µÄ¾ØĞÎ
-		mThumbDrawable.draw(canvas);// »­³ö°´Å¥
+				switchInnerBottom);//å›´ç»•æŒ‰é’®çš„çŸ©å½¢
+		mThumbDrawable.draw(canvas);// ç”»å‡ºæŒ‰é’®
 
-		if (mTextColorStateList != null) {// ÉèÖÃ×ÖÌåÑÕÉ«
+		if (mTextColorStateList != null) {// è®¾ç½®å­—ä½“é¢œè‰²
 			mTextPaint.setColor(mTextColorStateList.getColorForState(
 					getDrawableState(), mTextColorStateList.getDefaultColor()));
 		}
 		mTextPaint.drawableState = getDrawableState();
 		Layout switchTextLayout = getTargetCheckedState() ? mOnLayout
-				: mOffLayout;// ÉèÖÃÎÄ×Ö²¼¾Ö
+				: mOffLayout;// è®¾ç½®æ–‡å­—å¸ƒå±€
 		canvas.translate(
 				(thumbLeft + thumbRight) / 2 - switchTextLayout.getWidth() / 2,
 				(switchInnerTop + switchInnerBottom) / 2
@@ -362,7 +362,7 @@ public class SwitchButton extends CompoundButton {
 
 	}
 /**
- * ÅĞ¶ÏÎ»ÖÃÊÇ·ñ¹ıÖĞ¼ä
+ * åˆ¤æ–­ä½ç½®æ˜¯å¦è¿‡ä¸­é—´
  */
 	private boolean getTargetCheckedState() {
 		// TODO Auto-generated method stub
@@ -372,13 +372,13 @@ public class SwitchButton extends CompoundButton {
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
 		// TODO Auto-generated method stub
-		mVelocityTracker.addMovement(event);// Ìí¼ÓÊÂ¼ş£¬»ñµÃËÙ¶È
+		mVelocityTracker.addMovement(event);// æ·»åŠ äº‹ä»¶ï¼Œè·å¾—é€Ÿåº¦
 		int action = event.getActionMasked();
 		switch (action) {
-		case MotionEvent.ACTION_DOWN: {// °´ÏÂÊÂ¼ş
+		case MotionEvent.ACTION_DOWN: {// æŒ‰ä¸‹äº‹ä»¶
 			final float x = event.getX();
 			final float y = event.getY();
-			if (isEnabled() && hitThumb(x, y)) {//¿ÉÒÔÊ¹ÓÃ£¬ÔÚ°´âo¾ØĞÎ¿òƒÈµã»÷
+			if (isEnabled() && hitThumb(x, y)) {//å¯ä»¥ä½¿ç”¨ï¼Œåœ¨æŒ‰éˆ•çŸ©å½¢æ¡†å…§ç‚¹å‡»
 				mTouchMode = TOUCH_MODE_DOWN;
 				mTouchX = x;
 				mTouchY = y;
@@ -387,27 +387,27 @@ public class SwitchButton extends CompoundButton {
 		}
 		case MotionEvent.ACTION_MOVE: {
 			switch (mTouchMode) {
-			case TOUCH_MODE_IDLE:// ÎŞ¶¯×÷
+			case TOUCH_MODE_IDLE:// æ— åŠ¨ä½œ
 				return true;
-			case TOUCH_MODE_DOWN: {// ÒÑ°´ÏÂ
+			case TOUCH_MODE_DOWN: {// å·²æŒ‰ä¸‹
 				final float x2 = event.getX();
 				final float y2 = event.getY();
 				if (Math.abs(x2 - mTouchX) > mTouchSlop
-						|| Math.abs(y2 - mTouchY) > mTouchSlop) {// ÍÏ¶¯¶¯×÷
-					mTouchMode = TOUCH_MODE_DRAGGING;// ÍÏ¶¯Ä£Ê½
-					getParent().requestDisallowInterceptTouchEvent(true);// ¸¸¿Ø¼ş±ğ´¦ÀíÍÏ¶¯ÊÂ¼ş
+						|| Math.abs(y2 - mTouchY) > mTouchSlop) {// æ‹–åŠ¨åŠ¨ä½œ
+					mTouchMode = TOUCH_MODE_DRAGGING;// æ‹–åŠ¨æ¨¡å¼
+					getParent().requestDisallowInterceptTouchEvent(true);// çˆ¶æ§ä»¶åˆ«å¤„ç†æ‹–åŠ¨äº‹ä»¶
 					mTouchX = x2;
 					mTouchY = y2;
 					return true;
 				}
 				break;
 			}
-			case TOUCH_MODE_DRAGGING: {// ÍÏ¶¯
+			case TOUCH_MODE_DRAGGING: {// æ‹–åŠ¨
 				final float x3 = event.getX();
-				final float dx = x3 - mTouchX;// ÍÏ¶¯¾àÀë
+				final float dx = x3 - mTouchX;// æ‹–åŠ¨è·ç¦»
 				float newPos = Math.max(0,
-						Math.min(mThumbPosition + dx, getThumbScrollRange()));// »ñµÃ°´Å¥µÄ×îĞÂÎ»ÖÃ
-				if (newPos != mThumbPosition) {// ·¢Éú¸Ä±äÖØ»æ
+						Math.min(mThumbPosition + dx, getThumbScrollRange()));// è·å¾—æŒ‰é’®çš„æœ€æ–°ä½ç½®
+				if (newPos != mThumbPosition) {// å‘ç”Ÿæ”¹å˜é‡ç»˜
 					mThumbPosition = newPos;
 					mTouchX = x3;
 					invalidate();
@@ -418,7 +418,7 @@ public class SwitchButton extends CompoundButton {
 			break;
 		}
 		case MotionEvent.ACTION_UP:
-		case MotionEvent.ACTION_CANCEL:// ÊÂ¼ş±»¸¸¿Ø¼ş½Ø¶Ï,»¬¶¯µ½¸¸¿Ø¼şÖ®ÉÏ´¥·¢
+		case MotionEvent.ACTION_CANCEL:// äº‹ä»¶è¢«çˆ¶æ§ä»¶æˆªæ–­,æ»‘åŠ¨åˆ°çˆ¶æ§ä»¶ä¹‹ä¸Šè§¦å‘
 		{
 			if (mTouchMode == TOUCH_MODE_DRAGGING) {
 				stopDrg(event);
@@ -433,7 +433,7 @@ public class SwitchButton extends CompoundButton {
 	}
 
 	/**
-	 * ½áÊøÊÂ¼ş²¢ÇÒ¹éÎ»
+	 * ç»“æŸäº‹ä»¶å¹¶ä¸”å½’ä½
 	 * @param event
 	 */
 	private void stopDrg(MotionEvent event) {
@@ -442,16 +442,16 @@ public class SwitchButton extends CompoundButton {
 		boolean commitChange = event.getAction() == MotionEvent.ACTION_UP
 				&& isEnabled();
 		cancleSupertouch(event);
-		if (commitChange) {// ×´Ì¬¸Ä±ä´ò¿ª×´Ì¬
+		if (commitChange) {// çŠ¶æ€æ”¹å˜æ‰“å¼€çŠ¶æ€
 			boolean newState;
-			mVelocityTracker.computeCurrentVelocity(1000);// 1ÃëÔË¶¯ÏñËØ£¬ËÙ¶Èµ¥Î»
-			float xvel = mVelocityTracker.getXVelocity();// x·½ÏòµÄËÙ¶È
-			if (xvel > mMinFlingVelocity) {//´ïµ½Ò»¶¨ËÙ¶È¾ÍÈ¥×ª»¯×´Ì¬
+			mVelocityTracker.computeCurrentVelocity(1000);// 1ç§’è¿åŠ¨åƒç´ ï¼Œé€Ÿåº¦å•ä½
+			float xvel = mVelocityTracker.getXVelocity();// xæ–¹å‘çš„é€Ÿåº¦
+			if (xvel > mMinFlingVelocity) {//è¾¾åˆ°ä¸€å®šé€Ÿåº¦å°±å»è½¬åŒ–çŠ¶æ€
 				newState = xvel > 0;
-			} else {//Î´´ïµ½¾ÍÈ¥ÅĞ¶ÏÏÖÔÚµÄÎ»ÖÃ
+			} else {//æœªè¾¾åˆ°å°±å»åˆ¤æ–­ç°åœ¨çš„ä½ç½®
 				newState = getTargetCheckedState();
 			}
-			animateThumbToCheckedState(newState);// ÉèÖÃ×´Ì¬½øĞĞÖØ»æ
+			animateThumbToCheckedState(newState);// è®¾ç½®çŠ¶æ€è¿›è¡Œé‡ç»˜
 		} else {
 			animateThumbToCheckedState(isChecked());
 		}
@@ -463,7 +463,7 @@ public class SwitchButton extends CompoundButton {
 	}
 
 	/**
-	 * ½áÊøÊÂ¼ş
+	 * ç»“æŸäº‹ä»¶
 	 * 
 	 * @param event
 	 */
@@ -477,7 +477,7 @@ public class SwitchButton extends CompoundButton {
 	}
 
 	/**
-	 * ÅĞ¶Ï£Ø£Ù°´ÏÂ×ø±êÊÇ·ñÔÚ°´Å¥Ö®ÖĞ
+	 * åˆ¤æ–­ï¼¸ï¼¹æŒ‰ä¸‹åæ ‡æ˜¯å¦åœ¨æŒ‰é’®ä¹‹ä¸­
 	 * 
 	 * @param x
 	 * @param y
@@ -533,23 +533,23 @@ public class SwitchButton extends CompoundButton {
 		return drawableState;
 	}
 
-	/** »ñÈ¡Ñ¡ÖĞ×´Ì¬ÏÂµÄÏÔÊ¾ÎÄ×Ö */
+	/** è·å–é€‰ä¸­çŠ¶æ€ä¸‹çš„æ˜¾ç¤ºæ–‡å­— */
 	public CharSequence getTextOn() {
 		return mTextOnCharSequence;
 	}
 
-	/** Éè¶¨Ñ¡ÖĞ×´Ì¬ÏÂµÄÏÔÊ¾ÎÄ×Ö */
+	/** è®¾å®šé€‰ä¸­çŠ¶æ€ä¸‹çš„æ˜¾ç¤ºæ–‡å­— */
 	public void setTextOn(CharSequence textOn) {
 		mTextOnCharSequence = textOn;
 		requestLayout();
 	}
 
-	/** »ñÈ¡·ÇÑ¡ÖĞ×´Ì¬ÏÂµÄÏÔÊ¾ÎÄ×Ö */
+	/** è·å–éé€‰ä¸­çŠ¶æ€ä¸‹çš„æ˜¾ç¤ºæ–‡å­— */
 	public CharSequence getTextOff() {
 		return mTextOffCharSequence;
 	}
 
-	/** Éè¶¨·ÇÑ¡ÖĞ×´Ì¬ÏÂµÄÏÔÊ¾ÎÄ×Ö */
+	/** è®¾å®šéé€‰ä¸­çŠ¶æ€ä¸‹çš„æ˜¾ç¤ºæ–‡å­— */
 	public void setTextOff(CharSequence textOff) {
 		mTextOffCharSequence = textOff;
 		requestLayout();

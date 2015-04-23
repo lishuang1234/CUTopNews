@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/newsbg_listpage" >
+
+    <TextView
+        android:id="@+id/favor_item_title"
+        style="@style/item_title"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:text="测试" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/favor_item_title"
+        android:layout_marginTop="5dp" >
+
+        <TextView
+            android:id="@+id/favor_item_publistime"
+            style="@style/item_secondary_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="10dp"
+            android:text="时间：2014-10-12" />
+
+        <ImageView
+            android:id="@+id/favor_item_popicon"
+            android:layout_width="23.0dip"
+            android:layout_height="23.0dip"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:duplicateParentState="false"
+            android:scaleType="center"
+            android:src="@drawable/popicon_listpage" />
+    </RelativeLayout>
+
+</RelativeLayout><!-- From: file:/home/ls/androidDevelop/ls/CUTopNews/CUTopNews/myTopNews/MyTopNews/res/layout/left_drawer_favor_list_item.xml -->

@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/home/ls/androidDevelop/ls/CUTopNews/CUTopNews/myTopNews/MyTopNews/libs/fastjson-1.1.34.android.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="bef1d1224be099c387794bce1bdf81b38f37c6ce">
+        <dex dex="/home/ls/androidDevelop/ls/CUTopNews/CUTopNews/myTopNews/MyTopNews/build/intermediates/pre-dexed/debug/fastjson-1.1.34.android-495a5b205ad6af85acef132fce7c27ed9131abe8.jar" />
+    </item>
+    <item
+        jar="/home/ls/androidDevelop/ls/CUTopNews/CUTopNews/myTopNews/MyTopNews/libs/ShareSDK-SinaWeibo-2.3.7.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="b68d40e64d864e2ecafe7e4eb3ed3786e722a131">
+        <dex dex="/home/ls/androidDevelop/ls/CUTopNews/CUTopNews/myTopNews/MyTopNews/build/intermediates/pre-dexed/debug/ShareSDK-SinaWeibo-2.3.7-097a09000ee892600356e0f128e7626075589132.jar" />
+    </item>
+    <item
+        jar="/home/ls/androidDevelop/ls/CUTopNews/CUTopNews/myTopNews/MyTopNews/libs/ShareSDK-QZone-2.3.7.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4bfbbb26f3604faadd11003a7667d2fbf2eb17d8">
+        <dex dex="/home/ls/androidDevelop/ls/CUTopNews/CUTopNews/myTopNews/MyTopNews/build/intermediates/pre-dexed/debug/ShareSDK-QZone-2.3.7-7f727bf46a20cf20a05d3e84fb907c74409ff02f.jar" />
+    </item>
+    <item
+        jar="/home/ls/androidDevelop/ls/CUTopNews/CUTopNews/myTopNews/MyTopNews/libs/ShareSDK-Instagram-2.3.7.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="47976a418f06606c118478f4ce37231697ed48e6">
+        <dex dex="/home/ls/androidDevelop/ls/CUTopNews/CUTopNews/myTopNews/MyTopNews/build/intermediates/pre-dexed/debug/ShareSDK-Instagram-2.3.7-b507269b53b28f1fcb74c06e584737412e0bcfc0.jar" />
+    </item>
+    <item
+        jar="/home/ls/androidDevelop/ls/CUTopNews/CUTopNews/myTopNews/MyTopNews/libs/ShareSDK-Core-2.3.7.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="df6385791bdc0eab3414d903d65d272dca1c4413">
+        <dex dex="/home/ls/androidDevelop/ls/CUTopNews/CUTopNews/myTopNews/MyTopNews/build/intermediates/pre-dexed/debug/ShareSDK-Core-2.3.7-8778a2d89d6f331831e95a41fb1ea7982233372c.jar" />
+    </item>
+    <item
+        jar="/home/ls/androidDevelop/ls/CUTopNews/CUTopNews/myTopNews/MyTopNews/libs/ShareSDK-QQ-2.3.7.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="c16b41faab4bc7737573d32b70bc71ea52863105">
+        <dex dex="/home/ls/androidDevelop/ls/CUTopNews/CUTopNews/myTopNews/MyTopNews/build/intermediates/pre-dexed/debug/ShareSDK-QQ-2.3.7-c712eaa9a5734d6d6c5c44a633f5b9b7c966439d.jar" />
+    </item>
+    <item
+        jar="/home/ls/androidDevelop/ls/CUTopNews/CUTopNews/myTopNews/MyTopNews/libs/mframework.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="25509058b34a5ee08dbf66e57078e3083735d200">
+        <dex dex="/home/ls/androidDevelop/ls/CUTopNews/CUTopNews/myTopNews/MyTopNews/build/intermediates/pre-dexed/debug/mframework-b52afbf78bb5b0e12db0ffcb66e574b432ad015f.jar" />
+    </item>
+    <item
+        jar="/home/ls/androidDevelop/ls/CUTopNews/CUTopNews/myTopNews/MyTopNews/libs/ShareSDK-Flickr-2.3.7.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="cd873c394f217dfceb03c1b68ad531f20cbca5ab">
+        <dex dex="/home/ls/androidDevelop/ls/CUTopNews/CUTopNews/myTopNews/MyTopNews/build/intermediates/pre-dexed/debug/ShareSDK-Flickr-2.3.7-9c948e81c1d165f9e7121d57e57b19e0b7e98f02.jar" />
+    </item>
+    <item
+        jar="/home/ls/androidDevelop/ls/CUTopNews/CUTopNews/myTopNews/MyTopNews/build/intermediates/exploded-aar/myTopNews/library/unspecified/libs/android-support-v4.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="48c94ae70fa65718b382098237806a5909bb096e">
+        <dex dex="/home/ls/androidDevelop/ls/CUTopNews/CUTopNews/myTopNews/MyTopNews/build/intermediates/pre-dexed/debug/android-support-v4-13c065105ab51a8b21fb0abe403f91e4aa08c94e.jar" />
+    </item>
+    <item
+        jar="/home/ls/androidDevelop/ls/CUTopNews/CUTopNews/myTopNews/MyTopNews/libs/universal-image-loader-1.9.3-with-sources.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="03e3948d42b8d78961a092a184af66bd86da42e6">
+        <dex dex="/home/ls/androidDevelop/ls/CUTopNews/CUTopNews/myTopNews/MyTopNews/build/intermediates/pre-dexed/debug/universal-image-loader-1.9.3-with-sources-f134e72ba37b80409d0f1fe3a7a5c42c03a76cd7.jar" />
+    </item>
+    <item
+        jar="/home/ls/androidDevelop/ls/CUTopNews/CUTopNews/myTopNews/MyTopNews/build/intermediates/exploded-aar/myTopNews/library/unspecified/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="f398b123c6f0b33d4a41d5ad7b440323d0a6a6e6">
+        <dex dex="/home/ls/androidDevelop/ls/CUTopNews/CUTopNews/myTopNews/MyTopNews/build/intermediates/pre-dexed/debug/classes-5758fc01ac866785d5f8eb7b9eac9d2252eccc20.jar" />
+    </item>
+    <item
+        jar="/home/ls/androidDevelop/ls/CUTopNews/CUTopNews/myTopNews/MyTopNews/libs/jsoup-1.8.1.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="3d57e95c0f150b885ccdbda7a12bef353fd31d02">
+        <dex dex="/home/ls/androidDevelop/ls/CUTopNews/CUTopNews/myTopNews/MyTopNews/build/intermediates/pre-dexed/debug/jsoup-1.8.1-985d5dcbd0e545837686e4432995f4b5b8329b98.jar" />
+    </item>
+
+</items>

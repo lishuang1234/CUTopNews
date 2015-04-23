@@ -1,0 +1,13 @@
+/home/ls/androidDevelop/ls/CUTopNews/CUTopNews/myTopNews/MyTopNews/build/intermediates/classes/debug
+/home/ls/androidDevelop/ls/CUTopNews/CUTopNews/myTopNews/MyTopNews/build/intermediates/pre-dexed/debug/ShareSDK-QQ-2.3.7-c712eaa9a5734d6d6c5c44a633f5b9b7c966439d.jar
+/home/ls/androidDevelop/ls/CUTopNews/CUTopNews/myTopNews/MyTopNews/build/intermediates/pre-dexed/debug/ShareSDK-Flickr-2.3.7-9c948e81c1d165f9e7121d57e57b19e0b7e98f02.jar
+/home/ls/androidDevelop/ls/CUTopNews/CUTopNews/myTopNews/MyTopNews/build/intermediates/pre-dexed/debug/ShareSDK-Instagram-2.3.7-b507269b53b28f1fcb74c06e584737412e0bcfc0.jar
+/home/ls/androidDevelop/ls/CUTopNews/CUTopNews/myTopNews/MyTopNews/build/intermediates/pre-dexed/debug/ShareSDK-SinaWeibo-2.3.7-097a09000ee892600356e0f128e7626075589132.jar
+/home/ls/androidDevelop/ls/CUTopNews/CUTopNews/myTopNews/MyTopNews/build/intermediates/pre-dexed/debug/ShareSDK-QZone-2.3.7-7f727bf46a20cf20a05d3e84fb907c74409ff02f.jar
+/home/ls/androidDevelop/ls/CUTopNews/CUTopNews/myTopNews/MyTopNews/build/intermediates/pre-dexed/debug/classes-5758fc01ac866785d5f8eb7b9eac9d2252eccc20.jar
+/home/ls/androidDevelop/ls/CUTopNews/CUTopNews/myTopNews/MyTopNews/build/intermediates/pre-dexed/debug/mframework-b52afbf78bb5b0e12db0ffcb66e574b432ad015f.jar
+/home/ls/androidDevelop/ls/CUTopNews/CUTopNews/myTopNews/MyTopNews/build/intermediates/pre-dexed/debug/ShareSDK-Core-2.3.7-8778a2d89d6f331831e95a41fb1ea7982233372c.jar
+/home/ls/androidDevelop/ls/CUTopNews/CUTopNews/myTopNews/MyTopNews/build/intermediates/pre-dexed/debug/fastjson-1.1.34.android-495a5b205ad6af85acef132fce7c27ed9131abe8.jar
+/home/ls/androidDevelop/ls/CUTopNews/CUTopNews/myTopNews/MyTopNews/build/intermediates/pre-dexed/debug/jsoup-1.8.1-985d5dcbd0e545837686e4432995f4b5b8329b98.jar
+/home/ls/androidDevelop/ls/CUTopNews/CUTopNews/myTopNews/MyTopNews/build/intermediates/pre-dexed/debug/android-support-v4-13c065105ab51a8b21fb0abe403f91e4aa08c94e.jar
+/home/ls/androidDevelop/ls/CUTopNews/CUTopNews/myTopNews/MyTopNews/build/intermediates/pre-dexed/debug/universal-image-loader-1.9.3-with-sources-f134e72ba37b80409d0f1fe3a7a5c42c03a76cd7.jar

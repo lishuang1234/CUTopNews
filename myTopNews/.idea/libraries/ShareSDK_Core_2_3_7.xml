@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="ShareSDK-Core-2.3.7">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/MyTopNews/libs/ShareSDK-Core-2.3.7.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
