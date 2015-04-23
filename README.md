@@ -10,6 +10,14 @@
 + 校园天气
 + 相关设置
 
+###使用的库
+
++ SlidingMenu
++ universal-image-loader
++ jsoup
++ ShareSDK
++ fastJson
+
 
 ###截图：
 
