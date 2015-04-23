@@ -11,7 +11,7 @@
 + 相关设置
 
 
-截图：
+###截图：
 
  ![image](https://github.com/lishuang1234/CUTopNews/blob/master/myTopNews/screenshort/1.png)
  
